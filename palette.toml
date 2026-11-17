@@ -1,0 +1,26 @@
+# cyberdream palette: the single source of truth.
+# Colors are taken verbatim from cyberdream.nvim.
+
+[meta]
+name = "cyberdream"
+variant = "dark"
+# Accent: the name of any color below. Default "green"; set "blue" for the
+# original cyberdream accent. Rebuild afterwards: ./install.sh
+accent = "green"
+
+[colors]
+bg        = "#16181a"
+bg_alt    = "#1e2124"
+dark      = "#111214"
+fg        = "#ffffff"
+grey      = "#7b8496"
+selection = "#3c4048"
+red       = "#ff6e5e"
+green     = "#5eff6c"
+yellow    = "#f1ff5e"
+blue      = "#5ea1ff"
+magenta   = "#bd5eff"
+cyan      = "#5ef1ff"
+orange    = "#ffbd5e"
+pink      = "#ff5ea0"
+fuchsia   = "#ff5ef1"

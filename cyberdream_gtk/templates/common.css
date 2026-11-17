@@ -1,0 +1,36 @@
+/* ---- Shared by GTK3 and GTK4 ---- */
+
+/* Selected rows: a tinted plate instead of a solid accent block, so white
+ * text stays readable on it. */
+row:selected {
+  background-color: {{row_selected}};
+}
+
+row:selected:hover {
+  background-color: {{row_selected_hover}};
+}
+
+/* Scrollbars */
+scrollbar slider {
+  background-color: {{scrollbar}};
+}
+
+scrollbar slider:hover {
+  background-color: {{scrollbar_hover}};
+}
+
+scrollbar slider:active,
+scrollbar slider:hover:active {
+  background-color: {{scrollbar_active}};
+}
+
+scrollbar slider:disabled {
+  background-color: transparent;
+}
+
+/* Tooltips */
+tooltip.background {
+  background-color: {{tooltip_bg}};
+  border: 1px solid {{border}};
+  color: {{text}};
+}

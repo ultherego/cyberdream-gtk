@@ -1,0 +1,75 @@
+/* ---- GTK4 / libadwaita ---- */
+
+/* GTK4 apps without libadwaita get their look from the GTK theme. adw-gtk3
+ * hardcodes a blue accent there as a CSS variable, ignoring the named color,
+ * so set the variable too. For libadwaita apps this repeats what they do. */
+:root {
+  --accent-bg-color: {{accent}};
+  --accent-fg-color: {{on_accent}};
+}
+
+/* Selected items in grids (rows are covered by the shared rules) */
+gridview > child:selected {
+  background-color: {{row_selected}};
+}
+
+gridview > child:selected:hover {
+  background-color: {{row_selected_hover}};
+}
+
+/* Text cursor. Text selection is left to libadwaita: it already tints it
+ * with the accent, and distinguishes focused from unfocused selections. */
+text,
+textview {
+  caret-color: {{accent}};
+}
+
+/* Secondary text: the palette's grey instead of a faded foreground */
+.dimmed,
+.dim-label {
+  opacity: 1;
+  color: {{muted}};
+}
+
+/* Links */
+link,
+button.link {
+  color: {{link}};
+}
+
+link:hover,
+button.link:hover {
+  color: {{mix(link, fg, 0.25)}};
+}
+
+link:visited,
+button.link:visited {
+  color: {{link_visited}};
+}
+
+/* Popovers and toasts: a visible edge, since they sit on a near-black window */
+popover > contents {
+  box-shadow: 0 0 0 1px {{border}},
+              0 1px 5px 1px rgba(0, 0, 0, 0.09),
+              0 2px 14px 3px rgba(0, 0, 0, 0.05);
+}
+
+toast {
+  background-color: {{raised_bg}};
+  color: {{text}};
+  box-shadow: 0 0 0 1px {{border}},
+              0 1px 3px 1px rgba(0, 0, 0, 0.07),
+              0 2px 6px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* Header layer. libadwaita draws tool bars flat, in the window color; give the
+ * content side its own surface and a line under it. Side bars keep theirs. */
+toolbarview > .top-bar {
+  background-color: {{raised_bg}};
+  box-shadow: inset 0 -1px {{border}};
+}
+
+.sidebar-pane toolbarview > .top-bar {
+  background-color: transparent;
+  box-shadow: none;
+}

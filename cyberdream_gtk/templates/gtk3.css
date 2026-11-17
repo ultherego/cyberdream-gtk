@@ -1,0 +1,66 @@
+/* ---- GTK3 / adw-gtk3 ---- */
+
+/* Selected items in tree and icon views: same plate as rows */
+treeview.view:selected,
+treeview.view:selected:focus,
+iconview.view:selected,
+iconview.view:selected:focus {
+  background-color: {{row_selected}};
+  color: {{text}};
+}
+
+/* Text selection and cursor */
+entry selection,
+textview text selection,
+label selection {
+  background-color: {{text_selected}};
+  color: {{text}};
+}
+
+entry,
+spinbutton,
+textview text {
+  caret-color: {{accent}};
+}
+
+/* Secondary text: the palette's grey instead of a faded foreground */
+.dim-label {
+  opacity: 1;
+  color: {{muted}};
+}
+
+/* Links */
+*:link {
+  color: {{link}};
+}
+
+*:link:hover {
+  color: {{mix(link, fg, 0.25)}};
+}
+
+*:link:visited {
+  color: {{link_visited}};
+}
+
+/* Tooltips: adw-gtk3 forces white text with a black shadow */
+tooltip {
+  text-shadow: none;
+}
+
+tooltip * {
+  color: {{text}};
+}
+
+/* Menus and popovers: a visible edge, since they sit on a near-black window.
+ * Firefox takes its context menu colors from here. */
+menu,
+.menu,
+.context-menu,
+popover.background {
+  border: 1px solid {{border}};
+}
+
+menu menuitem:hover,
+.menu menuitem:hover {
+  background-color: {{item_hover}};
+}

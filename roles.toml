@@ -1,0 +1,119 @@
+# Semantic roles: what each palette color is used for.
+#
+# A value is an expression:
+#   name              a palette color, another role, or "accent"
+#   #rrggbb           a literal color
+#   alpha(expr, 0.5)  expr with its opacity multiplied
+#   mix(a, b, 0.25)   25% of the way from a to b
+#
+# Templates and the [named.*] tables below refer to roles, never to hex values.
+
+[roles]
+# Surfaces, darkest to lightest
+sidebar_bg   = "dark"
+window_bg    = "bg"
+view_bg      = "bg"
+raised_bg    = "bg_alt"      # header bars, cards, dialogs, popovers
+tooltip_bg   = "dark"
+
+# Text
+text         = "fg"
+muted        = "grey"
+on_accent    = "bg"          # text on accent / status colored backgrounds
+
+# Lines
+border       = "selection"
+
+# Status
+destructive  = "red"
+success      = "green"
+warning      = "yellow"
+error        = "red"
+
+# Selection
+row_selected       = "alpha(accent, 0.22)"
+row_selected_hover = "alpha(accent, 0.30)"
+text_selected      = "alpha(accent, 0.30)"
+item_hover         = "alpha(fg, 0.08)"
+
+# Links
+link         = "cyan"
+link_visited = "magenta"
+
+# Scrollbars
+scrollbar        = "alpha(grey, 0.6)"
+scrollbar_hover  = "grey"
+scrollbar_active = "accent"
+
+# Named colors shared by libadwaita (GTK4) and adw-gtk3 (GTK3).
+# Anything not listed keeps the default of the base theme.
+[named.common]
+accent_bg_color = "accent"
+accent_fg_color = "on_accent"
+accent_color    = "accent"
+
+destructive_bg_color = "destructive"
+destructive_fg_color = "on_accent"
+destructive_color    = "destructive"
+success_bg_color     = "success"
+success_fg_color     = "on_accent"
+success_color        = "success"
+warning_bg_color     = "warning"
+warning_fg_color     = "on_accent"
+warning_color        = "warning"
+error_bg_color       = "error"
+error_fg_color       = "on_accent"
+error_color          = "error"
+
+window_bg_color = "window_bg"
+window_fg_color = "text"
+view_bg_color   = "view_bg"
+view_fg_color   = "text"
+
+headerbar_bg_color       = "raised_bg"
+headerbar_fg_color       = "text"
+headerbar_border_color   = "text"
+headerbar_backdrop_color = "window_bg"
+headerbar_shade_color    = "border"     # the line under a header bar
+
+sidebar_bg_color       = "sidebar_bg"
+sidebar_fg_color       = "text"
+sidebar_backdrop_color = "sidebar_bg"
+sidebar_border_color   = "border"
+
+card_bg_color      = "raised_bg"
+card_fg_color      = "text"
+dialog_bg_color    = "raised_bg"
+dialog_fg_color    = "text"
+popover_bg_color   = "raised_bg"
+popover_fg_color   = "text"
+thumbnail_bg_color = "raised_bg"
+thumbnail_fg_color = "text"
+
+[named.gtk4]
+secondary_sidebar_bg_color       = "mix(sidebar_bg, window_bg, 0.5)"
+secondary_sidebar_fg_color       = "text"
+secondary_sidebar_backdrop_color = "mix(sidebar_bg, window_bg, 0.5)"
+secondary_sidebar_border_color   = "border"
+
+[named.gtk3]
+panel_bg_color = "sidebar_bg"
+panel_fg_color = "text"
+
+theme_fg_color          = "text"
+theme_text_color        = "text"
+theme_bg_color          = "window_bg"
+theme_base_color        = "view_bg"
+theme_selected_bg_color = "accent"
+theme_selected_fg_color = "on_accent"
+
+insensitive_bg_color   = "window_bg"
+insensitive_fg_color   = "muted"
+insensitive_base_color = "view_bg"
+
+theme_unfocused_fg_color          = "text"
+theme_unfocused_text_color        = "text"
+theme_unfocused_bg_color          = "window_bg"
+theme_unfocused_base_color        = "view_bg"
+theme_unfocused_selected_bg_color = "accent"
+theme_unfocused_selected_fg_color = "on_accent"

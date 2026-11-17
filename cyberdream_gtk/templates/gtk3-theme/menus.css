@@ -38,7 +38,7 @@ menu,
   border: 1px solid {{border}};
   border-radius: 0;
   color: {{text}};
-  background-color: {{raised_bg}};
+  background-color: {{menu_bg}};
 }
 
 .csd menu,
@@ -117,7 +117,7 @@ menu > arrow,
   padding: 4px;
   border-radius: 0;
   color: {{muted}};
-  background-color: {{raised_bg}};
+  background-color: {{menu_bg}};
 }
 
 menu > arrow.top,

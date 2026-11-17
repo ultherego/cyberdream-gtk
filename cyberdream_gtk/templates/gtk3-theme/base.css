@@ -35,10 +35,10 @@
   -GtkWidget-text-handle-height: 24;
   -GtkDialog-button-spacing: 4;
   -GtkDialog-action-area-border: 0;
-  outline-color: {{alpha(accent, 0.6)}};
+  outline-color: {{alpha(accent, 0.5)}};
   outline-style: solid;
-  outline-offset: -3px;
-  outline-width: 1px;
+  outline-offset: -2px;
+  outline-width: 2px;
   -gtk-outline-radius: {{@radius}};
   -gtk-secondary-caret-color: {{accent}};
 }

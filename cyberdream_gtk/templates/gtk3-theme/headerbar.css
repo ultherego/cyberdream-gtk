@@ -71,7 +71,6 @@ headerbar.selection-mode .subtitle {
 headerbar.selection-mode button {
   color: {{on_accent}};
   background-color: {{alpha(bg, 0.15)}};
-  border-color: {{alpha(bg, 0.3)}};
 }
 
 headerbar.selection-mode button:hover {
@@ -81,7 +80,6 @@ headerbar.selection-mode button:hover {
 headerbar.selection-mode button.suggested-action {
   color: {{text}};
   background-color: {{bg}};
-  border-color: {{bg}};
 }
 
 .tiled headerbar,

@@ -7,7 +7,8 @@ Expected colors:
 | Element | Color |
 |---|---|
 | window, view, header bar, menu, popover and dialog background | `#16181a` |
-| cards and controls | `#1e2124` |
+| cards | `#1e2124` |
+| buttons and entries | filled with 10% of the text color, no border |
 | sidebar | `#111214` |
 | lines (under the header, beside the sidebar, around menus) | `#3c4048` |
 | accent | `#5eff6c` |

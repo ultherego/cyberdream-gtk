@@ -163,7 +163,9 @@ class StandaloneThemeTest(unittest.TestCase):
         self.theme = Theme.load()
 
     def test_shape_tokens(self):
-        self.assertEqual(render_template("a { r: {{@radius}}; }", self.theme), "a { r: 6px; }")
+        radius = self.theme.shape["radius"]
+        self.assertRegex(radius, r"^\d+px$")
+        self.assertEqual(render_template("a { r: {{@radius}}; }", self.theme), f"a {{ r: {radius}; }}")
         with self.assertRaisesRegex(ThemeError, "unknown shape token"):
             render_template("a { r: {{@nope}}; }", self.theme)
 

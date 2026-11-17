@@ -52,9 +52,9 @@ scrollbar_hover  = "grey"
 scrollbar_active = "accent"
 
 # Controls (used by the standalone themes)
-control_bg      = "bg_alt"
-control_hover   = "mix(bg_alt, fg, 0.08)"
-control_active  = "mix(bg_alt, fg, 0.16)"
+control_bg      = "alpha(fg, 0.1)"     # filled controls, as in libadwaita
+control_hover   = "alpha(fg, 0.15)"
+control_active  = "alpha(fg, 0.3)"
 field_bg        = "dark"
 trough          = "selection"
 accent_soft     = "alpha(accent, 0.18)"
@@ -69,9 +69,9 @@ tab_active_border = "accent"
 
 # Shape tokens: plain CSS values, referenced in templates as {{@name}}.
 [shape]
-radius        = "6px"     # buttons, entries, rows
-radius_large  = "10px"    # menus, popovers, cards
-radius_window = "10px"    # top corners of client-side decorated windows
+radius        = "9px"     # buttons, entries, rows
+radius_large  = "12px"    # menus, popovers, cards
+radius_window = "12px"    # top corners of client-side decorated windows
 control_pad   = "5px 10px"
 
 # Named colors shared by libadwaita (GTK4) and adw-gtk3 (GTK3).

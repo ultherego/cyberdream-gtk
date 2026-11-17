@@ -352,6 +352,10 @@ treeview.view radio:selected {
   background-color: {{field_bg}};
 }
 
+treeview.view check:selected {
+  border-radius: 4px;
+}
+
 treeview.view check:selected:checked,
 treeview.view radio:selected:checked {
   border-color: {{accent}};

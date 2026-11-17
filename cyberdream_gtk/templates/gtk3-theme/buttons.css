@@ -1,9 +1,12 @@
-/* ==== Buttons ==== */
+/* ==== Buttons ====
+ * Filled and borderless, like libadwaita's: the fill is a share of the text
+ * color, so a button works on any surface. The transparent border keeps the
+ * size stable for the few variants that do draw one. */
 button {
   min-height: 22px;
   min-width: 16px;
   padding: {{@control_pad}};
-  border: 1px solid {{border}};
+  border: 1px solid transparent;
   border-radius: {{@radius}};
   color: {{text}};
   background-color: {{control_bg}};
@@ -12,37 +15,29 @@ button {
   text-shadow: none;
   -gtk-icon-shadow: none;
   font-weight: bold;
-  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+  transition: background-color 150ms ease-out;
 }
 
 button:hover {
   background-color: {{control_hover}};
-  border-color: {{muted}};
 }
 
 button:active,
 button:checked {
-  background-color: {{accent_soft}};
-  border-color: {{accent}};
-  color: {{accent}};
+  background-color: {{control_active}};
 }
 
 button:checked:hover {
-  background-color: {{alpha(accent, 0.26)}};
-}
-
-button:focus {
-  border-color: {{accent}};
+  background-color: {{alpha(fg, 0.35)}};
 }
 
 button:disabled {
   color: {{disabled_text}};
-  background-color: {{window_bg}};
-  border-color: {{border}};
+  background-color: {{alpha(fg, 0.05)}};
 }
 
 button:disabled:checked {
-  background-color: {{alpha(accent, 0.08)}};
+  background-color: {{alpha(fg, 0.15)}};
 }
 
 button.text-button {
@@ -77,21 +72,21 @@ button.circular label {
   padding: 0;
 }
 
-/* Flat */
+/* Flat: no fill until hovered; also the default inside bars */
 button.flat,
 button.sidebar-button,
 toolbar button,
-.inline-toolbar button {
-  border-color: transparent;
+.inline-toolbar button,
+headerbar button:not(.suggested-action):not(.destructive-action):not(.titlebutton) {
   background-color: transparent;
 }
 
 button.flat:hover,
 button.sidebar-button:hover,
 toolbar button:hover,
-.inline-toolbar button:hover {
-  background-color: {{item_hover}};
-  border-color: transparent;
+.inline-toolbar button:hover,
+headerbar button:not(.suggested-action):not(.destructive-action):not(.titlebutton):hover {
+  background-color: {{control_bg}};
 }
 
 button.flat:active,
@@ -99,73 +94,64 @@ button.flat:checked,
 toolbar button:active,
 toolbar button:checked,
 .inline-toolbar button:active,
-.inline-toolbar button:checked {
-  background-color: {{accent_soft}};
-  border-color: transparent;
-  color: {{accent}};
+.inline-toolbar button:checked,
+headerbar button:not(.suggested-action):not(.destructive-action):not(.titlebutton):active,
+headerbar button:not(.suggested-action):not(.destructive-action):not(.titlebutton):checked {
+  background-color: {{control_hover}};
 }
 
 button.flat:disabled,
 toolbar button:disabled,
-.inline-toolbar button:disabled {
+.inline-toolbar button:disabled,
+headerbar button:not(.suggested-action):not(.destructive-action):not(.titlebutton):disabled {
   background-color: transparent;
-  border-color: transparent;
 }
 
-/* Suggested and destructive */
+/* Suggested: solid accent. Destructive: tinted, as libadwaita draws it. */
 button.suggested-action {
   color: {{on_accent}};
   background-color: {{accent}};
-  border-color: {{accent}};
 }
 
 button.suggested-action:hover {
   background-color: {{mix(accent, fg, 0.25)}};
-  border-color: {{mix(accent, fg, 0.25)}};
 }
 
 button.suggested-action:active,
 button.suggested-action:checked {
   color: {{on_accent}};
   background-color: {{mix(accent, bg, 0.25)}};
-  border-color: {{mix(accent, bg, 0.25)}};
 }
 
 button.destructive-action {
-  color: {{on_accent}};
-  background-color: {{destructive}};
-  border-color: {{destructive}};
+  color: {{destructive}};
+  background-color: {{alpha(destructive, 0.15)}};
 }
 
 button.destructive-action:hover {
-  background-color: {{mix(destructive, fg, 0.25)}};
-  border-color: {{mix(destructive, fg, 0.25)}};
+  background-color: {{alpha(destructive, 0.22)}};
 }
 
 button.destructive-action:active,
 button.destructive-action:checked {
-  color: {{on_accent}};
-  background-color: {{mix(destructive, bg, 0.25)}};
-  border-color: {{mix(destructive, bg, 0.25)}};
+  color: {{destructive}};
+  background-color: {{alpha(destructive, 0.32)}};
 }
 
 button.suggested-action:disabled,
 button.destructive-action:disabled {
   color: {{disabled_text}};
-  background-color: {{window_bg}};
-  border-color: {{border}};
+  background-color: {{alpha(fg, 0.05)}};
 }
 
 button.suggested-action.flat {
   color: {{accent}};
   background-color: transparent;
-  border-color: transparent;
 }
 
 button.destructive-action.flat {
   color: {{destructive}};
   background-color: transparent;
-  border-color: transparent;
 }
 
 /* Link buttons */
@@ -173,7 +159,6 @@ button.link,
 button.link:hover,
 button.link:active,
 button.link:checked {
-  border-color: transparent;
   background-color: transparent;
   box-shadow: none;
   font-weight: normal;
@@ -241,7 +226,15 @@ button.small-button {
   padding: 2px;
 }
 
-/* Linked groups: one outline, square inner corners */
+/* Linked groups: square inner corners and a hairline between the parts */
+.linked:not(.vertical) > button:not(:last-child):not(:only-child) {
+  box-shadow: inset -1px 0 {{alpha(bg, 0.7)}};
+}
+
+.linked.vertical > button:not(:last-child):not(:only-child) {
+  box-shadow: inset 0 -1px {{alpha(bg, 0.7)}};
+}
+
 .linked:not(.vertical) > button,
 .linked:not(.vertical) > entry,
 .linked:not(.vertical) > spinbutton,
@@ -341,7 +334,7 @@ combobox button.combo {
 }
 
 combobox:drop(active) button.combo {
-  border-color: {{accent}};
+  box-shadow: inset 0 0 0 2px {{alpha(accent, 0.5)}};
 }
 
 combobox menu menuitem {

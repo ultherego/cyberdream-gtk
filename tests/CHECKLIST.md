@@ -61,6 +61,8 @@ Do oceny (świadome decyzje projektu, łatwe do zmiany w `roles.toml` i szablona
 ## Inne
 
 - [ ] **Firefox:** menu pod prawym przyciskiem ma ciemne tło i czytelny tekst.
+      Jeśli jest szare (`#36363a`), ustaw w `about:config`
+      `widget.gtk.libadwaita-colors.enabled` na `false`.
 - [ ] **Flatpak (dowolna aplikacja GTK):** kolory takie same jak w aplikacjach natywnych.
 - [ ] **Aplikacje Electron/Tauri:** mają własny wygląd; sprawdź tylko systemowe okna
       wyboru plików.

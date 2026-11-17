@@ -59,6 +59,13 @@ DMS dodaje lub usuwa w `gtk.css` wyłącznie własną linię `@import url("dank-
 (albo dowiązanie `gtk.css -> dank-colors.css`), a pozostałych linii nie rusza.
 Import cyberdream stoi po imporcie DMS, więc to jego kolory wygrywają.
 
+### Firefox
+
+Firefox dla motywów z rodziny Adwaita (także `adw-gtk3`) używa wbudowanej palety
+libadwaita zamiast kolorów motywu GTK, więc menu kontekstowe pozostaje szare.
+Żeby brał kolory z motywu: `about:config` → `widget.gtk.libadwaita-colors.enabled`
+→ `false`, potem ponowne uruchomienie Firefoksa.
+
 ## Zmiana kolorów
 
 | Plik | Zawartość |

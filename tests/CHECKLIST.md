@@ -41,9 +41,8 @@ Expected colors:
 
 To judge (deliberate design choices, easy to change in `roles.toml` and the templates):
 
-- [ ] Header bars on the content side are `#1e2124` with a line underneath, also in apps
-      with a flat libadwaita header; the sidebar's header keeps the sidebar color
-      (the `toolbarview > .top-bar` rule in `templates/gtk4.css`).
+- [ ] Header bars in libadwaita apps are flat, in the window color, as libadwaita draws
+      them; only raised header bars use `#1e2124`.
 - [ ] The line under the header (`headerbar_shade_color`) is not too strong.
 - [ ] Secondary text (`.dimmed`) in `#7b8496` also looks right on selected rows.
 

@@ -93,6 +93,10 @@ Adwaita: it replaces the theme's colors with a built-in libadwaita palette and t
 the accent from the desktop's accent color setting. With `cyberdream` selected as the
 GTK theme this does not apply and Firefox reads the theme's colors.
 
+Firefox computes its tab colors itself. `build/firefox/cyberdream.css` sets them
+(tab, hovered tab, active tab and its outline); the comment at its top says where to
+put it in your Firefox profile.
+
 If you stay on `adw-gtk3-dark` with only the overlays, set
 `widget.gtk.libadwaita-colors.enabled` to `false` in `about:config` and restart
 Firefox; the accent then still comes from the desktop setting.

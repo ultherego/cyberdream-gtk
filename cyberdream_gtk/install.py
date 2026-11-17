@@ -21,7 +21,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-from .targets import ALL, Target
+from .targets import ALL as ALL_TARGETS
+from .targets import Target
+
+ALL = tuple(t for t in ALL_TARGETS if t.install)
 
 IMPORT_LINE = '@import url("cyberdream.css");'
 IMPORT_RE = re.compile(r'^\s*@import\s+(url\()?["\']cyberdream\.css["\']\)?\s*;\s*$')

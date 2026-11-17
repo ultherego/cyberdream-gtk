@@ -60,6 +60,12 @@ accent_soft     = "alpha(accent, 0.18)"
 disabled_text   = "mix(fg, bg, 0.6)"
 shadow          = "alpha(#000000, 0.5)"
 
+# Browser tabs (Firefox userChrome)
+tab_bg            = "#1d1f23"
+tab_hover_bg      = "mix(tab_bg, fg, 0.1)"
+tab_active_bg     = "selection"
+tab_active_border = "accent"
+
 # Shape tokens: plain CSS values, referenced in templates as {{@name}}.
 [shape]
 radius        = "6px"     # buttons, entries, rows

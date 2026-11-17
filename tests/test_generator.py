@@ -193,6 +193,17 @@ class StandaloneThemeTest(unittest.TestCase):
         self.assertIn("--accent-bg-color: #5eff6c;", css)
 
 
+class FirefoxTest(unittest.TestCase):
+    def test_tab_colors(self):
+        from cyberdream_gtk.targets import FIREFOX
+
+        css = render(Theme.load(), FIREFOX)
+        self.assertIn("--tab-background-color: #1d1f23 !important;", css)
+        self.assertIn("--tab-background-color-selected: #3c4048 !important;", css)
+        self.assertIn("--tab-border-color-selected: #5eff6c !important;", css)
+        self.assertFalse(FIREFOX.install)
+
+
 class SourceViewTest(unittest.TestCase):
     def setUp(self):
         self.xml = render(Theme.load(), SOURCEVIEW)

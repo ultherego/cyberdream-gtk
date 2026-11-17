@@ -35,5 +35,6 @@ class Target:
 from .gtk3 import TARGET as GTK3  # noqa: E402
 from .gtk4 import TARGET as GTK4  # noqa: E402
 from .sourceview import TARGET as SOURCEVIEW  # noqa: E402
+from .geany import TARGET as GEANY  # noqa: E402
 
-ALL: tuple[Target, ...] = (GTK3, GTK4, SOURCEVIEW)
+ALL: tuple[Target, ...] = (GTK3, GTK4, SOURCEVIEW, GEANY)

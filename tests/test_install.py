@@ -52,7 +52,7 @@ class InstallTest(unittest.TestCase):
 
     def snapshot(self):
         result = {}
-        paths = [*self.config.glob("gtk-[34].0/*"), *self.data.rglob("*.xml")]
+        paths = [*self.config.glob("gtk-[34].0/*"), *self.config.glob("geany/*/*"), *self.data.rglob("*.xml")]
         for path in sorted(paths):
             result[str(path.relative_to(self.config.parent))] = (
                 "-> " + os.readlink(path) if path.is_symlink() else path.read_text()
@@ -71,6 +71,7 @@ class InstallTest(unittest.TestCase):
             )
             self.assertEqual((self.config / d / "dank-colors.css").read_text(), "/* dms */\n")
         self.assertIn('<style-scheme id="cyberdream"', self.scheme.read_text())
+        self.assertIn("name=Cyberdream", (self.config / "geany/colorschemes/cyberdream.conf").read_text())
 
     def test_install_twice_changes_nothing_more(self):
         inst.install(self.build, self.roots, log=quiet)

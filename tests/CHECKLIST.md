@@ -51,7 +51,8 @@ Do oceny (świadome decyzje projektu, łatwe do zmiany w `roles.toml` i szablona
 ## GTK3 / adw-gtk3-dark
 
 - [ ] **Aplikacja z paskiem menu** (np. Geany): menu rozwijane (ramka, podświetlenie
-      pozycji), karty, drzewo (zaznaczenie jako zielonkawa płytka z białym tekstem).
+      pozycji), karty, drzewo (zaznaczenie jako zielonkawa płytka z białym tekstem);
+      obszar edycji ze schematem „Cyberdream" ma tło `#16181a`.
 - [ ] **Aplikacja z listą i paskiem nagłówka** (np. Disks): nagłówek `#1e2124`,
       zaznaczenie wiersza, menu.
 - [ ] **Przeglądarka dokumentów** (np. Evince): panel miniatur, zaznaczenie tekstu.

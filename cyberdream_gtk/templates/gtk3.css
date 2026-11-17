@@ -29,16 +29,22 @@ textview text {
   color: {{muted}};
 }
 
-/* Links */
-*:link {
+/* Links (adw-gtk3 colors link buttons separately, with the accent) */
+*:link,
+button.link,
+button.link > label {
   color: {{link}};
 }
 
-*:link:hover {
+*:link:hover,
+button.link:hover,
+button.link:hover > label {
   color: {{mix(link, fg, 0.25)}};
 }
 
-*:link:visited {
+*:link:visited,
+button.link:visited,
+button.link:visited > label {
   color: {{link_visited}};
 }
 

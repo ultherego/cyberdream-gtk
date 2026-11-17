@@ -8,8 +8,8 @@ na bazie libadwaita (GTK4) oraz `adw-gtk3-dark` (GTK3). Kształty, odstępy i wy
 widżetów pochodzą z motywu bazowego, dlatego motywem GTK w ustawieniach systemu
 musi pozostać `adw-gtk3-dark`; „cyberdream" nie pojawia się na liście motywów.
 
-Do tego schemat kolorów GtkSourceView 5 dla obszaru edycji w Text Editorze i podobnych
-aplikacjach, które nie biorą kolorów edytora z motywu GTK.
+Do tego schematy kolorów dla edytorów, które nie biorą kolorów obszaru edycji z motywu
+GTK: GtkSourceView 5 (Text Editor i podobne) oraz Geany.
 
 ## Wymagania
 
@@ -34,13 +34,14 @@ Po instalacji uruchom ponownie aplikacje GTK. Co sprawdzić: [tests/CHECKLIST.md
 1. Kopiuje wszystkie dotykane pliki do `~/.config/gtk-cyberdream-bak-RRRRMMDD-GGMMSS/`.
 2. W `~/.config/gtk-3.0` i `~/.config/gtk-4.0` zapisuje wygenerowany `cyberdream.css`
    i dopisuje do `gtk.css` linię `@import url("cyberdream.css");` po pozostałych importach.
-3. Zapisuje schemat edytora w `~/.local/share/gtksourceview-5/styles/cyberdream.xml`.
+3. Zapisuje schematy edytorów: `~/.local/share/gtksourceview-5/styles/cyberdream.xml`
+   i `~/.config/geany/colorschemes/cyberdream.conf`.
 
-Schemat edytora trzeba raz wybrać w aplikacji (Text Editor: menu → Preferencje) albo:
+Schemat edytora trzeba raz wybrać w aplikacji:
 
-```sh
-gsettings set org.gnome.TextEditor style-scheme cyberdream   # powrót: Adwaita
-```
+- Text Editor: menu → Preferencje, albo
+  `gsettings set org.gnome.TextEditor style-scheme cyberdream` (powrót: `Adwaita`)
+- Geany: Widok → Zmień schemat kolorów → Cyberdream
 
 Na końcu wypisuje komendę cofającą zmiany:
 
@@ -84,8 +85,8 @@ cyberdream_gtk/
   color.py                    kolory i wyrażenia
   palette.py                  wczytanie i walidacja
   render.py                   szablony -> CSS
-  targets/                    cele wyjściowe (gtk3, gtk4, sourceview)
-  templates/                  common.css, gtk3.css, gtk4.css, sourceview.xml
+  targets/                    cele wyjściowe (gtk3, gtk4, sourceview, geany)
+  templates/                  common.css, gtk3.css, gtk4.css, sourceview.xml, geany.conf
   install.py, cli.py          instalator i wiersz poleceń
 tests/                        testy i lista kontrolna
 build/                        wynik (poza repozytorium)

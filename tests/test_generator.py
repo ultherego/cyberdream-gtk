@@ -8,7 +8,7 @@ from pathlib import Path
 from cyberdream_gtk.color import Color, ColorError, contrast, evaluate
 from cyberdream_gtk.palette import ROOT, Theme, ThemeError
 from cyberdream_gtk.render import build, render, render_template
-from cyberdream_gtk.targets import ALL, GTK3, GTK4, SOURCEVIEW
+from cyberdream_gtk.targets import ALL, GEANY, GTK3, GTK4, SOURCEVIEW
 
 OVERLAYS = (GTK3, GTK4)
 
@@ -198,6 +198,30 @@ class SourceViewTest(unittest.TestCase):
             Path(tmp, "cyberdream.xml").write_text(self.xml)
             result = subprocess.run([sys.executable, "-c", code, tmp], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
+
+
+class GeanyTest(unittest.TestCase):
+    def test_scheme_is_valid_keyfile_with_opaque_colors(self):
+        import configparser
+
+        text = render(Theme.load(), GEANY)
+        self.assertNotIn("rgba(", text.split("[theme_info]")[1])
+        cfg = configparser.ConfigParser(interpolation=None)
+        cfg.optionxform = str
+        cfg.read_string(text)
+        self.assertEqual(cfg["theme_info"]["name"], "Cyberdream")
+        styles = cfg["named_styles"]
+        self.assertEqual(styles["default"], "#ffffff;#16181a;false;false")
+        self.assertEqual(styles["caret"], "#5eff6c")
+        names = set(styles) | {"default"}
+        for key, value in styles.items():
+            for field in value.split(";")[:2]:
+                field = field.split(",")[0]
+                if field:
+                    self.assertTrue(
+                        re.fullmatch(r"#[0-9a-f]{6}", field) or field in names,
+                        f"{key}: bad color or unknown style {field!r}",
+                    )
 
 
 if __name__ == "__main__":

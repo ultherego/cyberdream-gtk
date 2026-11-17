@@ -8,7 +8,7 @@ headerbar,
   border-color: {{border}};
   border-radius: {{@radius_window}} {{@radius_window}} 0 0;
   color: {{text}};
-  background-color: {{raised_bg}};
+  background-color: {{header_bg}};
   background-image: none;
   box-shadow: none;
 }
@@ -118,7 +118,7 @@ window.csd > .titlebar:not(headerbar) {
 
 .primary-toolbar {
   border-bottom: 1px solid {{border}};
-  background-color: {{raised_bg}};
+  background-color: {{header_bg}};
 }
 
 /* Path bars */

@@ -124,7 +124,8 @@ class RenderTest(unittest.TestCase):
                 self.assertIn(required, names)
             self.assertIn(("accent_bg_color", "#5eff6c"), defined)
             self.assertIn(("sidebar_bg_color", "#111214"), defined)
-            self.assertIn(("headerbar_bg_color", "#1e2124"), defined)
+            self.assertIn(("headerbar_bg_color", "#16181a"), defined)
+            self.assertIn(("card_bg_color", "#1e2124"), defined)
         self.assertIn("theme_selected_bg_color", render(self.theme, GTK3))
         self.assertNotIn("theme_selected_bg_color", render(self.theme, GTK4))
 

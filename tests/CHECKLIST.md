@@ -6,8 +6,8 @@ Expected colors:
 
 | Element | Color |
 |---|---|
-| window and view background | `#16181a` |
-| header bars, cards, dialogs, popovers | `#1e2124` |
+| window, view, header bar and menu background | `#16181a` |
+| cards, dialogs, popovers | `#1e2124` |
 | sidebar | `#111214` |
 | lines (under the header, beside the sidebar, around menus) | `#3c4048` |
 | accent | `#5eff6c` |
@@ -41,8 +41,8 @@ Expected colors:
 
 To judge (deliberate design choices, easy to change in `roles.toml` and the templates):
 
-- [ ] Header bars in libadwaita apps are flat, in the window color, as libadwaita draws
-      them; only raised header bars use `#1e2124`.
+- [ ] Header bars are in the window color (`header_bg` in `roles.toml`), separated
+      from the content by a line where the toolkit draws one.
 - [ ] The line under the header (`headerbar_shade_color`) is not too strong.
 - [ ] Secondary text (`.dimmed`) in `#7b8496` also looks right on selected rows.
 
@@ -51,14 +51,14 @@ To judge (deliberate design choices, easy to change in `roles.toml` and the temp
 - [ ] **An app with a menu bar** (e.g. Geany): drop-down menu (border, item highlight),
       tabs, tree (selection as a greenish plate with white text); the editing area with
       the "Cyberdream" scheme has a `#16181a` background.
-- [ ] **An app with a list and a header bar** (e.g. Disks): `#1e2124` header, row
+- [ ] **An app with a list and a header bar** (e.g. Disks): header in the window color with a line under it, row
       selection, menu.
 - [ ] **A document viewer** (e.g. Evince): thumbnail panel, text selection.
 - [ ] Apps with their own theme (e.g. GIMP): check only the file chooser dialogs.
 
 ## Other
 
-- [ ] **Firefox:** the context menu has a `#1e2124` background, readable text and the
+- [ ] **Firefox:** the toolbar and the context menu have a `#16181a` background, readable text and the
       theme's accent. If it is grey (`#36363a`), the GTK theme name still starts with
       `adw`; see the Firefox section of the README.
 - [ ] **Flatpak (any GTK app):** same colors as in native apps.

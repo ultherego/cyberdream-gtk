@@ -14,7 +14,8 @@
 sidebar_bg   = "dark"
 window_bg    = "bg"
 view_bg      = "bg"
-raised_bg    = "bg_alt"      # header bars, cards, dialogs, popovers
+header_bg    = "bg"          # header bars and tool bars; Firefox takes its toolbar color from here
+raised_bg    = "bg_alt"      # cards, dialogs, popovers
 tooltip_bg   = "dark"
 menu_bg      = "bg"          # GTK3 menus; Firefox takes its menu colors from here
 
@@ -89,7 +90,7 @@ window_fg_color = "text"
 view_bg_color   = "view_bg"
 view_fg_color   = "text"
 
-headerbar_bg_color       = "raised_bg"
+headerbar_bg_color       = "header_bg"
 headerbar_fg_color       = "text"
 headerbar_border_color   = "text"
 headerbar_backdrop_color = "window_bg"

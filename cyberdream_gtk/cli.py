@@ -52,7 +52,9 @@ def main(argv: list[str] | None = None) -> int:
     return 0
 
 
-def _epilogue(backup_dir: Path, dry_run: bool) -> None:
+def _epilogue(backup_dir: Path | None, dry_run: bool) -> None:
+    if backup_dir is None:
+        return
     if dry_run:
         print("dry run: nothing was changed")
         return

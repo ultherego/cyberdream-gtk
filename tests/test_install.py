@@ -74,6 +74,12 @@ class InstallTest(unittest.TestCase):
         self.assertIn('<style-scheme id="cyberdream"', self.scheme.read_text())
         self.assertIn("name=Cyberdream", (self.config / "geany/colorschemes/cyberdream.conf").read_text())
 
+    def test_second_install_makes_no_backup(self):
+        first = inst.install(self.build, self.roots, log=quiet)
+        self.assertIsNotNone(first)
+        self.assertIsNone(inst.install(self.build, self.roots, log=quiet))
+        self.assertEqual(len(list(self.config.glob(inst.BACKUP_PREFIX + "*"))), 1)
+
     def test_install_twice_changes_nothing_more(self):
         inst.install(self.build, self.roots, log=quiet)
         first = self.snapshot()

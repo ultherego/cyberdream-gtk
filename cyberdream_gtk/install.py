@@ -135,7 +135,15 @@ def backup(roots: Roots, log=print, dry_run: bool = False) -> Path:
     return dest
 
 
-def install(build_dir: Path, roots: Roots | None = None, dry_run: bool = False, log=print) -> Path:
+def _same(a: Path, b: Path) -> bool:
+    return b.is_file() and not b.is_symlink() and a.read_bytes() == b.read_bytes()
+
+
+def install(
+    build_dir: Path, roots: Roots | None = None, dry_run: bool = False, log=print
+) -> Path | None:
+    """Install every target. Returns the backup directory, or None when
+    everything was already up to date (then nothing is touched or backed up)."""
     roots = roots or Roots.default()
     plan = []
     for target in ALL:
@@ -148,6 +156,19 @@ def install(build_dir: Path, roots: Roots | None = None, dry_run: bool = False, 
             gtk_css = directory / "gtk.css"
             new_text = add_import(_read_gtk_css(gtk_css))
         plan.append((source, directory / target.output, gtk_css, new_text))
+
+    def current(item) -> bool:
+        source, out, gtk_css, new_text = item
+        return _same(source, out) and (
+            gtk_css is None
+            or (gtk_css.is_file() and not gtk_css.is_symlink()
+                and gtk_css.read_text(encoding="utf-8") == new_text)
+        )
+
+    plan = [item for item in plan if not current(item)]
+    if not plan:
+        log("already up to date")
+        return None
 
     dest = backup(roots, log, dry_run)
     for source, out, gtk_css, new_text in plan:

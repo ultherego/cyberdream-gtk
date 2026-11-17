@@ -10,7 +10,8 @@ Expected colors:
 | cards | `#1e2124` |
 | buttons and entries | filled with 10% of the text color, no border |
 | sidebar | `#111214` |
-| lines (under the header, beside the sidebar, around menus) | `#3c4048` |
+| outlines of menus, popovers and tooltips | `#3c4048` |
+| lines between sections (under headers, beside sidebars, separators) | none |
 | accent | `#5eff6c` |
 | secondary text | `#7b8496` |
 | links | `#5ef1ff`, visited `#bd5eff` |
@@ -28,8 +29,8 @@ Expected colors:
 
 ## GTK4 / libadwaita
 
-- [ ] **File manager (e.g. Files):** sidebar darker than the file list, with a line on
-      its edge; selection in list and grid view; path bar; context menu with a border;
+- [ ] **File manager (e.g. Files):** sidebar darker than the file list, with no line
+      on its edge; selection in list and grid view; path bar; context menu with a border;
       toast after copying or deleting a file.
 - [ ] **Text editor (e.g. Text Editor):** preferences window (`#1e2124` cards on a
       `#16181a` background), tabs, menu. Editing area with the "Cyberdream" scheme:
@@ -44,7 +45,6 @@ To judge (deliberate design choices, easy to change in `roles.toml` and the temp
 
 - [ ] Header bars are in the window color (`header_bg` in `roles.toml`), separated
       from the content by a line where the toolkit draws one.
-- [ ] The line under the header (`headerbar_shade_color`) is not too strong.
 - [ ] Secondary text (`.dimmed`) in `#7b8496` also looks right on selected rows.
 
 ## GTK3 (the standalone `cyberdream` theme)
@@ -52,7 +52,7 @@ To judge (deliberate design choices, easy to change in `roles.toml` and the temp
 - [ ] **An app with a menu bar** (e.g. Geany): drop-down menu (border, item highlight),
       tabs, tree (selection as a greenish plate with white text); the editing area with
       the "Cyberdream" scheme has a `#16181a` background.
-- [ ] **An app with a list and a header bar** (e.g. Disks): header in the window color with a line under it, row
+- [ ] **An app with a list and a header bar** (e.g. Disks): header in the window color, row
       selection, menu.
 - [ ] **A document viewer** (e.g. Evince): thumbnail panel, text selection.
 - [ ] Apps with their own theme (e.g. GIMP): check only the file chooser dialogs.

@@ -8,6 +8,12 @@
   --accent-fg-color: {{on_accent}};
 }
 
+/* libadwaita draws its separators and section lines as a share of the text
+ * color; this sets how strong they are. */
+:root {
+  --border-opacity: {{@divider_opacity}};
+}
+
 /* Selected items in grids (rows are covered by the shared rules) */
 gridview > child:selected {
   background-color: {{row_selected}};

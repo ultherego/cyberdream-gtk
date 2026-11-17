@@ -6,10 +6,10 @@
 @define-color text_view_bg {{view_bg}};
 @define-color placeholder_text_color {{muted}};
 @define-color shade_color {{alpha(#000000, 0.3)}};
-@define-color headerbar_darker_shade_color {{border}};
+@define-color headerbar_darker_shade_color {{divider}};
 @define-color card_shade_color {{border}};
 @define-color popover_shade_color {{border}};
-@define-color sidebar_shade_color {{border}};
+@define-color sidebar_shade_color {{divider}};
 @define-color wm_title {{text}};
 @define-color wm_unfocused_title {{muted}};
 @define-color wm_highlight {{alpha(#000000, 0)}};
@@ -201,7 +201,7 @@ spinner:checked:disabled {
 separator {
   min-width: 1px;
   min-height: 1px;
-  background-color: {{border}};
+  background-color: {{divider}};
 }
 
 /* Window decorations */

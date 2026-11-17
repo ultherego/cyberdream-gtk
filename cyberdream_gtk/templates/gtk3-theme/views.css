@@ -53,12 +53,12 @@ list.content > row:last-child {
 }
 
 list.content > row:not(:last-child) {
-  border-bottom: 1px solid {{border}};
+  border-bottom: 1px solid {{divider}};
 }
 
 /* ==== Tree views ==== */
 treeview.view {
-  border-left-color: {{border}};
+  border-left-color: {{divider}};
   border-top-color: {{window_bg}};
 }
 
@@ -77,7 +77,7 @@ treeview.view:disabled {
 
 treeview.view.separator {
   min-height: 2px;
-  color: {{border}};
+  color: {{divider}};
 }
 
 treeview.view:drop(active) {
@@ -131,7 +131,7 @@ treeview.view header button {
   padding: 4px 6px;
   border-style: none solid solid none;
   border-width: 1px;
-  border-color: {{border}};
+  border-color: {{divider}};
   border-radius: 0;
   color: {{muted}};
   background-color: {{view_bg}};
@@ -176,13 +176,13 @@ treeview.view acceleditor > label {
 .sidebar:dir(ltr),
 .sidebar.left,
 .sidebar.left:dir(rtl) {
-  border-right: 1px solid {{border}};
+  border-right: 1px solid {{divider}};
   border-left-style: none;
 }
 
 .sidebar:dir(rtl),
 .sidebar.right {
-  border-left: 1px solid {{border}};
+  border-left: 1px solid {{divider}};
   border-right-style: none;
 }
 
@@ -292,11 +292,11 @@ placesview > actionbar > revealer > box > label {
 
 /* ==== File chooser ==== */
 filechooser .dialog-action-box {
-  border-top: 1px solid {{border}};
+  border-top: 1px solid {{divider}};
 }
 
 filechooser #pathbarbox {
-  border-bottom: 1px solid {{border}};
+  border-bottom: 1px solid {{divider}};
   background-color: {{window_bg}};
 }
 
@@ -321,7 +321,7 @@ calendar:selected {
 }
 
 calendar.header {
-  border-bottom: 1px solid {{border}};
+  border-bottom: 1px solid {{divider}};
   border-radius: 0;
 }
 

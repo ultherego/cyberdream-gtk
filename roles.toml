@@ -27,7 +27,8 @@ muted        = "grey"
 on_accent    = "bg"          # text on accent / status colored backgrounds
 
 # Lines
-border       = "selection"
+border       = "selection"   # outlines of menus, popovers, tooltips and windows
+divider      = "alpha(bg, 0)"   # lines between sections (under header bars, beside side bars, separators): none
 
 # Status
 destructive  = "red"
@@ -73,6 +74,7 @@ radius        = "9px"     # buttons, entries, rows
 radius_large  = "12px"    # menus, popovers, cards
 radius_window = "12px"    # top corners of client-side decorated windows
 control_pad   = "5px 10px"
+divider_opacity = "0%"    # libadwaita separators; keep in step with the divider role
 
 # Named colors shared by libadwaita (GTK4) and adw-gtk3 (GTK3).
 # Anything not listed keeps the default of the base theme.
@@ -103,12 +105,12 @@ headerbar_bg_color       = "header_bg"
 headerbar_fg_color       = "text"
 headerbar_border_color   = "text"
 headerbar_backdrop_color = "window_bg"
-headerbar_shade_color    = "border"     # the line under a header bar
+headerbar_shade_color    = "divider"     # the line under a header bar
 
 sidebar_bg_color       = "sidebar_bg"
 sidebar_fg_color       = "text"
 sidebar_backdrop_color = "sidebar_bg"
-sidebar_border_color   = "border"
+sidebar_border_color   = "divider"
 
 card_bg_color      = "raised_bg"
 card_fg_color      = "text"
@@ -123,7 +125,7 @@ thumbnail_fg_color = "text"
 secondary_sidebar_bg_color       = "mix(sidebar_bg, window_bg, 0.5)"
 secondary_sidebar_fg_color       = "text"
 secondary_sidebar_backdrop_color = "mix(sidebar_bg, window_bg, 0.5)"
-secondary_sidebar_border_color   = "border"
+secondary_sidebar_border_color   = "divider"
 
 [named.gtk3]
 panel_bg_color = "sidebar_bg"

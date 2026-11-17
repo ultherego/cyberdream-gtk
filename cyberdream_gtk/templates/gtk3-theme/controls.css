@@ -327,19 +327,19 @@ scrollbar {
 }
 
 scrollbar.top {
-  border-bottom: 1px solid {{border}};
+  border-bottom: 1px solid {{divider}};
 }
 
 scrollbar.bottom {
-  border-top: 1px solid {{border}};
+  border-top: 1px solid {{divider}};
 }
 
 scrollbar.left {
-  border-right: 1px solid {{border}};
+  border-right: 1px solid {{divider}};
 }
 
 scrollbar.right {
-  border-left: 1px solid {{border}};
+  border-left: 1px solid {{divider}};
 }
 
 scrollbar slider {
@@ -441,6 +441,6 @@ scrolledwindow undershoot {
 scrolledwindow junction {
   border-style: solid none none solid;
   border-width: 1px;
-  border-color: {{border}};
+  border-color: {{divider}};
   background-color: {{window_bg}};
 }

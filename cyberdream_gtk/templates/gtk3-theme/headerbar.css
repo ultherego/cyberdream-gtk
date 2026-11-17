@@ -5,7 +5,7 @@ headerbar,
   padding: 0 6px;
   border-width: 0 0 1px;
   border-style: solid;
-  border-color: {{border}};
+  border-color: {{divider}};
   border-radius: {{@radius_window}} {{@radius_window}} 0 0;
   color: {{text}};
   background-color: {{header_bg}};
@@ -111,11 +111,11 @@ window.csd > .titlebar:not(headerbar) {
 }
 
 .titlebar:not(headerbar) > separator {
-  background-color: {{border}};
+  background-color: {{divider}};
 }
 
 .primary-toolbar {
-  border-bottom: 1px solid {{border}};
+  border-bottom: 1px solid {{divider}};
   background-color: {{header_bg}};
 }
 

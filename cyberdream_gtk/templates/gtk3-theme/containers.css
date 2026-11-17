@@ -271,12 +271,12 @@ infobar.error > revealer > box {
 messagedialog .titlebar {
   min-height: 20px;
   border-style: none;
-  background-color: {{raised_bg}};
+  background-color: {{dialog_bg}};
 }
 
 messagedialog,
 messagedialog.background {
-  background-color: {{raised_bg}};
+  background-color: {{dialog_bg}};
 }
 
 messagedialog.csd .dialog-action-area button {

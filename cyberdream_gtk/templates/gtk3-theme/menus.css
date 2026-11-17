@@ -157,7 +157,7 @@ popover.background {
   border: 1px solid {{border}};
   border-radius: {{@radius_large}};
   color: {{text}};
-  background-color: {{raised_bg}};
+  background-color: {{popover_bg}};
   box-shadow: 0 2px 6px {{shadow}};
 }
 

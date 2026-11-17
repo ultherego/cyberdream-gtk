@@ -55,7 +55,7 @@ popover > contents {
 }
 
 toast {
-  background-color: {{raised_bg}};
+  background-color: {{popover_bg}};
   color: {{text}};
   box-shadow: 0 0 0 1px {{border}},
               0 1px 3px 1px rgba(0, 0, 0, 0.07),

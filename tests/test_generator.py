@@ -178,6 +178,14 @@ class StandaloneThemeTest(unittest.TestCase):
                          "paned > separator", "expander arrow", "list row", ".sidebar"):
             self.assertRegex(css, r"(?m)^" + re.escape(selector) + r"\b", selector)
 
+    def test_dark_variant_exists(self):
+        """libhandy falls back to Adwaita for themes without gtk-dark.css."""
+        from cyberdream_gtk.targets import GTK3_THEME_DARK, GTK4_THEME_DARK
+
+        for target in (GTK3_THEME_DARK, GTK4_THEME_DARK):
+            self.assertEqual(target.output, "gtk-dark.css")
+            self.assertEqual(render(self.theme, target), '@import url("gtk.css");\n')
+
     def test_gtk4_theme_imports_first(self):
         css = render(self.theme, GTK4_THEME)
         self.assertTrue(css.startswith("@import "))

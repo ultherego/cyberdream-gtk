@@ -17,3 +17,14 @@ TARGET = Target(
     root="home",
     dest=".themes/cyberdream/gtk-4.0",
 )
+
+DARK = Target(
+    name="themes/cyberdream/gtk-4.0",
+    base="dark variant",
+    templates=(),
+    output="gtk-dark.css",
+    prelude='@import url("gtk.css");\n',
+    kind="file",
+    root="home",
+    dest=".themes/cyberdream/gtk-4.0",
+)

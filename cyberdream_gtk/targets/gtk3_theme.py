@@ -26,3 +26,17 @@ INDEX = Target(
     root="home",
     dest=".themes/cyberdream",
 )
+
+# libhandy apps in dark mode only accept a theme that has a gtk-dark.css;
+# without it they fall back to Adwaita. The theme is dark-only, so the dark
+# variant is the same stylesheet.
+DARK = Target(
+    name="themes/cyberdream/gtk-3.0",
+    base="dark variant",
+    templates=(),
+    output="gtk-dark.css",
+    prelude='@import url("gtk.css");\n',
+    kind="file",
+    root="home",
+    dest=".themes/cyberdream/gtk-3.0",
+)

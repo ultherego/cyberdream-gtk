@@ -73,10 +73,15 @@ def _keys(target: Target) -> list[str]:
 def _read_gtk_css(path: Path) -> str:
     """Current gtk.css content, treating a DMS symlink as its import line."""
     if path.is_symlink():
-        if "dank-colors.css" in os.readlink(path):
+        link = os.readlink(path)
+        if "dank-colors.css" in link:
             return DANK_IMPORT_LINE + "\n"
+        if "themes/cyberdream/" in link:
+            # Theme switchers such as nwg-look link the selected theme's GTK4
+            # stylesheet here. For libadwaita that must be the overlay instead.
+            return ""
         raise InstallError(
-            f"{path} is a symlink to {os.readlink(path)} that this tool did not "
+            f"{path} is a symlink to {link} that this tool did not "
             "expect; not touching it. Add this line to your stylesheet yourself:\n"
             f"  {IMPORT_LINE}"
         )

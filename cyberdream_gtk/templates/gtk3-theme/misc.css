@@ -155,3 +155,13 @@ layout,
 fixed {
   background-color: transparent;
 }
+
+/* libhandy status pages */
+statuspage .icon {
+  color: {{muted}};
+}
+
+statuspage .title {
+  font-weight: 800;
+  font-size: 18pt;
+}

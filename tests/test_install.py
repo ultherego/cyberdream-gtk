@@ -111,6 +111,15 @@ class InstallTest(unittest.TestCase):
             self.assertEqual((self.config / d / "gtk.css").read_text(), DANK + "\n")
         self.assertFalse(self.scheme.exists())
 
+    def test_symlink_to_own_theme_is_replaced(self):
+        """A theme switcher may link gtk-4.0/gtk.css to the selected theme."""
+        gtk_css = self.config / "gtk-4.0" / "gtk.css"
+        gtk_css.unlink()
+        os.symlink(str(self.home / ".themes/cyberdream/gtk-4.0/gtk.css"), gtk_css)
+        inst.install(self.build, self.roots, log=quiet)
+        self.assertFalse(gtk_css.is_symlink())
+        self.assertEqual(gtk_css.read_text(), OURS + "\n")
+
     def test_foreign_symlink_is_refused_before_any_change(self):
         gtk_css = self.config / "gtk-4.0" / "gtk.css"
         gtk_css.unlink()

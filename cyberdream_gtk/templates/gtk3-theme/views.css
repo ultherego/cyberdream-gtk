@@ -1,0 +1,369 @@
+/* ==== Lists ==== */
+list {
+  color: {{text}};
+  background-color: {{view_bg}};
+  border-color: {{border}};
+}
+
+list row {
+  padding: 2px;
+}
+
+row {
+  transition: background-color 150ms ease-out;
+}
+
+row.activatable:hover {
+  background-color: {{item_hover}};
+}
+
+row.activatable:active {
+  background-color: {{accent_soft}};
+}
+
+row:selected {
+  color: {{text}};
+  background-color: {{row_selected}};
+}
+
+row:selected:hover,
+row.activatable:selected:hover {
+  background-color: {{row_selected_hover}};
+}
+
+row:disabled {
+  color: {{disabled_text}};
+}
+
+list.content,
+list.frame {
+  border: 1px solid {{border}};
+  border-radius: {{@radius_large}};
+  background-color: {{raised_bg}};
+}
+
+list.content > row:first-child {
+  border-top-left-radius: {{@radius_large}};
+  border-top-right-radius: {{@radius_large}};
+}
+
+list.content > row:last-child {
+  border-bottom-left-radius: {{@radius_large}};
+  border-bottom-right-radius: {{@radius_large}};
+}
+
+list.content > row:not(:last-child) {
+  border-bottom: 1px solid {{border}};
+}
+
+/* ==== Tree views ==== */
+treeview.view {
+  border-left-color: {{border}};
+  border-top-color: {{window_bg}};
+}
+
+treeview.view:selected,
+treeview.view:selected:focus {
+  border-radius: 0;
+  color: {{text}};
+  background-color: {{row_selected}};
+  border-left-color: {{alpha(accent, 0.4)}};
+  border-top-color: {{alpha(accent, 0.2)}};
+}
+
+treeview.view:disabled {
+  color: {{disabled_text}};
+}
+
+treeview.view.separator {
+  min-height: 2px;
+  color: {{border}};
+}
+
+treeview.view:drop(active) {
+  border-style: solid none;
+  border-width: 1px;
+  border-color: {{accent}};
+}
+
+treeview.view.after:drop(active) {
+  border-top-style: none;
+}
+
+treeview.view.before:drop(active) {
+  border-bottom-style: none;
+}
+
+treeview.view.expander {
+  min-width: 16px;
+  min-height: 16px;
+  color: {{muted}};
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+}
+
+treeview.view.expander:dir(rtl) {
+  -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+}
+
+treeview.view.expander:hover {
+  color: {{text}};
+}
+
+treeview.view.expander:checked {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+
+treeview.view.progressbar {
+  border-radius: 4px;
+  color: {{on_accent}};
+  background-color: {{accent}};
+  background-image: none;
+  box-shadow: none;
+}
+
+treeview.view.trough {
+  border-radius: 4px;
+  background-color: {{trough}};
+}
+
+treeview.view header button {
+  min-height: 0;
+  padding: 4px 6px;
+  border-style: none solid solid none;
+  border-width: 1px;
+  border-color: {{border}};
+  border-radius: 0;
+  color: {{muted}};
+  background-color: {{view_bg}};
+  font-weight: bold;
+  box-shadow: none;
+}
+
+treeview.view header button:hover {
+  color: {{text}};
+  background-color: {{control_hover}};
+}
+
+treeview.view header button:active {
+  color: {{accent}};
+}
+
+treeview.view header button:last-child {
+  border-right-style: none;
+}
+
+treeview.view button.dnd,
+treeview.view header.button.dnd {
+  padding: 0 6px;
+  border: 1px solid {{accent}};
+  border-radius: 0;
+  color: {{accent}};
+  background-color: {{view_bg}};
+  box-shadow: none;
+}
+
+treeview.view acceleditor > label {
+  background-color: {{accent}};
+  color: {{on_accent}};
+}
+
+/* ==== Side bars ==== */
+.sidebar {
+  border-style: none;
+  background-color: {{sidebar_bg}};
+}
+
+.sidebar:dir(ltr),
+.sidebar.left,
+.sidebar.left:dir(rtl) {
+  border-right: 1px solid {{border}};
+  border-left-style: none;
+}
+
+.sidebar:dir(rtl),
+.sidebar.right {
+  border-left: 1px solid {{border}};
+  border-right-style: none;
+}
+
+.sidebar list,
+.sidebar .view {
+  background-color: transparent;
+}
+
+paned .sidebar.left,
+paned .sidebar.right,
+paned .sidebar.left:dir(rtl),
+paned .sidebar:dir(rtl),
+paned .sidebar:dir(ltr),
+paned .sidebar {
+  border-style: none;
+}
+
+stacksidebar row {
+  padding: 10px 4px;
+}
+
+stacksidebar row > label {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+placessidebar > viewport.frame {
+  border-style: none;
+}
+
+placessidebar list {
+  padding: 4px 0;
+}
+
+placessidebar row {
+  min-height: 34px;
+  margin: 1px 6px;
+  padding: 0;
+  border-radius: {{@radius}};
+}
+
+placessidebar row > revealer {
+  padding: 0 10px;
+}
+
+placessidebar row image.sidebar-icon {
+  color: {{muted}};
+}
+
+placessidebar row image.sidebar-icon:dir(ltr) {
+  padding-right: 8px;
+}
+
+placessidebar row image.sidebar-icon:dir(rtl) {
+  padding-left: 8px;
+}
+
+placessidebar row label.sidebar-label:dir(ltr) {
+  padding-right: 2px;
+}
+
+placessidebar row:selected image.sidebar-icon {
+  color: {{accent}};
+}
+
+placessidebar row button.sidebar-button {
+  min-width: 22px;
+  min-height: 22px;
+  margin: 2px 0;
+  padding: 2px;
+  border-radius: 9999px;
+}
+
+placessidebar row.sidebar-placeholder-row {
+  min-height: 2px;
+  margin: 0 6px;
+  padding: 0;
+  background-color: {{accent}};
+}
+
+placessidebar row.sidebar-new-bookmark-row {
+  color: {{accent}};
+}
+
+placessidebar row:drop(active):not(:disabled) {
+  color: {{accent}};
+  box-shadow: inset 0 0 0 1px {{accent}};
+}
+
+placesview .server-list-button > image {
+  transition: 200ms ease-out;
+  -gtk-icon-transform: rotate(0turn);
+}
+
+placesview .server-list-button:checked > image {
+  -gtk-icon-transform: rotate(-0.5turn);
+}
+
+placesview row.activatable:hover {
+  background-color: {{item_hover}};
+}
+
+placesview > actionbar > revealer > box > label {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* ==== File chooser ==== */
+filechooser .dialog-action-box {
+  border-top: 1px solid {{border}};
+}
+
+filechooser #pathbarbox {
+  border-bottom: 1px solid {{border}};
+  background-color: {{window_bg}};
+}
+
+filechooserbutton:drop(active) {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+/* ==== Calendar ==== */
+calendar {
+  padding: 2px;
+  border: 1px solid {{border}};
+  border-radius: {{@radius}};
+  color: {{text}};
+  background-color: {{view_bg}};
+}
+
+calendar:selected {
+  border-radius: 4px;
+  color: {{on_accent}};
+  background-color: {{accent}};
+}
+
+calendar.header {
+  border-bottom: 1px solid {{border}};
+  border-radius: 0;
+}
+
+calendar.button {
+  color: {{muted}};
+}
+
+calendar.button:hover {
+  color: {{text}};
+}
+
+calendar.button:disabled {
+  color: {{disabled_text}};
+}
+
+calendar.highlight {
+  color: {{accent}};
+}
+
+calendar:indeterminate {
+  color: {{disabled_text}};
+}
+
+/* Check and radio cells keep their own look inside a selected row */
+treeview.view check:selected,
+treeview.view radio:selected {
+  border-color: {{muted}};
+  background-color: {{field_bg}};
+}
+
+treeview.view check:selected:checked,
+treeview.view radio:selected:checked {
+  border-color: {{accent}};
+  background-color: {{accent}};
+}
+
+treeview.view.trough,
+treeview.view.trough:selected {
+  color: {{text}};
+}
+
+treeview.view.progressbar:selected {
+  color: {{on_accent}};
+  background-color: {{accent}};
+}

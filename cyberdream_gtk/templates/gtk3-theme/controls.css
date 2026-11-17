@@ -1,0 +1,446 @@
+/* ==== Check boxes and radio buttons ==== */
+check,
+radio {
+  min-height: 16px;
+  min-width: 16px;
+  margin: 0 4px;
+  border: 1px solid {{muted}};
+  color: {{on_accent}};
+  background-color: {{field_bg}};
+  -gtk-icon-source: none;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+check {
+  border-radius: 4px;
+}
+
+radio {
+  border-radius: 9999px;
+}
+
+check:only-child,
+radio:only-child {
+  margin: 0;
+}
+
+check:hover,
+radio:hover {
+  border-color: {{accent}};
+}
+
+check:checked,
+check:indeterminate,
+radio:checked,
+radio:indeterminate {
+  border-color: {{accent}};
+  color: {{on_accent}};
+  background-color: {{accent}};
+}
+
+check:checked {
+  -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
+}
+
+check:indeterminate,
+radio:indeterminate {
+  -gtk-icon-source: -gtk-icontheme("list-remove-symbolic");
+}
+
+radio:checked {
+  background-image: radial-gradient(circle closest-side, {{on_accent}} 0%, {{on_accent}} 38%, transparent 46%);
+}
+
+check:disabled,
+radio:disabled {
+  border-color: {{border}};
+  background-color: {{window_bg}};
+}
+
+check:disabled:checked,
+check:disabled:indeterminate,
+radio:disabled:checked,
+radio:disabled:indeterminate {
+  border-color: {{disabled_text}};
+  background-color: {{disabled_text}};
+}
+
+checkbutton.text-button,
+radiobutton.text-button {
+  padding: 2px 0;
+  outline-offset: 0;
+}
+
+checkbutton.text-button label:not(:only-child):first-child,
+radiobutton.text-button label:not(:only-child):first-child {
+  margin-left: 4px;
+}
+
+checkbutton.text-button label:not(:only-child):last-child,
+radiobutton.text-button label:not(:only-child):last-child {
+  margin-right: 4px;
+}
+
+treeview.view check,
+treeview.view radio {
+  margin: 0;
+}
+
+/* ==== Switches ==== */
+switch {
+  margin: 2px 0;
+  padding: 2px;
+  border: 1px solid {{border}};
+  border-radius: 9999px;
+  color: transparent;
+  background-color: {{trough}};
+  font-size: 0;
+  transition: background-color 200ms ease-out, border-color 200ms ease-out;
+}
+
+switch:checked {
+  border-color: {{accent}};
+  background-color: {{accent}};
+}
+
+switch:disabled {
+  border-color: {{border}};
+  background-color: {{window_bg}};
+}
+
+switch slider {
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 9999px;
+  background-color: {{text}};
+  transition: 200ms ease-out;
+}
+
+switch:checked slider {
+  background-color: {{on_accent}};
+}
+
+switch:disabled slider {
+  background-color: {{disabled_text}};
+}
+
+switch image {
+  color: transparent;
+}
+
+/* ==== Scales ==== */
+scale {
+  min-height: 10px;
+  min-width: 10px;
+  padding: 12px;
+}
+
+scale trough,
+scale fill {
+  min-height: 4px;
+  min-width: 4px;
+  border-radius: 9999px;
+  background-color: {{trough}};
+}
+
+scale fill {
+  background-color: {{muted}};
+}
+
+scale highlight {
+  min-height: 4px;
+  min-width: 4px;
+  border-radius: 9999px;
+  background-color: {{accent}};
+}
+
+scale:disabled trough {
+  background-color: {{raised_bg}};
+}
+
+scale:disabled highlight {
+  background-color: {{disabled_text}};
+}
+
+scale slider {
+  min-height: 16px;
+  min-width: 16px;
+  margin: -7px;
+  border: 1px solid {{border}};
+  border-radius: 9999px;
+  background-color: {{text}};
+  transition: background-color 150ms ease-out;
+}
+
+scale slider:hover {
+  border-color: {{accent}};
+}
+
+scale slider:active {
+  border-color: {{accent}};
+  background-color: {{accent}};
+}
+
+scale slider:disabled {
+  background-color: {{disabled_text}};
+}
+
+scale.fine-tune slider {
+  margin: -5px;
+}
+
+scale value {
+  color: {{muted}};
+}
+
+scale marks {
+  color: {{muted}};
+}
+
+scale.horizontal marks.top {
+  margin-bottom: 6px;
+  margin-top: -12px;
+}
+
+scale.horizontal marks.bottom {
+  margin-top: 6px;
+  margin-bottom: -12px;
+}
+
+scale.vertical marks.top {
+  margin-right: 6px;
+  margin-left: -12px;
+}
+
+scale.vertical marks.bottom {
+  margin-left: 6px;
+  margin-right: -12px;
+}
+
+scale.horizontal indicator {
+  min-height: 6px;
+  min-width: 1px;
+  background-color: currentColor;
+}
+
+scale.vertical indicator {
+  min-height: 1px;
+  min-width: 6px;
+  background-color: currentColor;
+}
+
+scale.color {
+  min-height: 0;
+  min-width: 0;
+}
+
+scale.color trough {
+  border-radius: 0;
+}
+
+/* ==== Progress and level bars ==== */
+progressbar {
+  color: {{muted}};
+  font-size: smaller;
+}
+
+progressbar.horizontal trough,
+progressbar.horizontal progress {
+  min-height: 6px;
+}
+
+progressbar.vertical trough,
+progressbar.vertical progress {
+  min-width: 6px;
+}
+
+progressbar trough {
+  border-radius: 9999px;
+  background-color: {{trough}};
+}
+
+progressbar progress {
+  border-radius: 9999px;
+  background-color: {{accent}};
+}
+
+progressbar.osd {
+  min-width: 3px;
+  min-height: 3px;
+  background-color: transparent;
+}
+
+progressbar.osd trough {
+  background-color: transparent;
+}
+
+levelbar.horizontal block {
+  min-height: 6px;
+}
+
+levelbar.horizontal.discrete block {
+  min-width: 32px;
+  margin: 0 1px;
+}
+
+levelbar.vertical block {
+  min-width: 6px;
+}
+
+levelbar.vertical.discrete block {
+  min-height: 32px;
+  margin: 1px 0;
+}
+
+levelbar trough {
+  padding: 2px;
+  border-radius: 9999px;
+  background-color: {{trough}};
+}
+
+levelbar block {
+  border-radius: 9999px;
+  background-color: {{accent}};
+}
+
+levelbar block.low {
+  background-color: {{warning}};
+}
+
+levelbar block.high,
+levelbar block:not(.empty) {
+  background-color: {{accent}};
+}
+
+levelbar block.full {
+  background-color: {{success}};
+}
+
+levelbar block.empty {
+  background-color: transparent;
+}
+
+/* ==== Scrollbars ==== */
+scrollbar {
+  background-color: {{window_bg}};
+  transition: 300ms ease-out;
+}
+
+scrollbar.top {
+  border-bottom: 1px solid {{border}};
+}
+
+scrollbar.bottom {
+  border-top: 1px solid {{border}};
+}
+
+scrollbar.left {
+  border-right: 1px solid {{border}};
+}
+
+scrollbar.right {
+  border-left: 1px solid {{border}};
+}
+
+scrollbar slider {
+  min-width: 6px;
+  min-height: 6px;
+  margin: -1px;
+  border: 4px solid transparent;
+  border-radius: 9999px;
+  background-clip: padding-box;
+  background-color: {{scrollbar}};
+}
+
+scrollbar slider:hover {
+  background-color: {{scrollbar_hover}};
+}
+
+scrollbar slider:hover:active {
+  background-color: {{scrollbar_active}};
+}
+
+scrollbar slider:disabled {
+  background-color: transparent;
+}
+
+scrollbar.vertical slider {
+  min-height: 40px;
+}
+
+scrollbar.horizontal slider {
+  min-width: 40px;
+}
+
+scrollbar.fine-tune slider {
+  min-width: 4px;
+  min-height: 4px;
+}
+
+scrollbar.overlay-indicator {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+scrollbar.overlay-indicator:not(.dragging):not(.hovering) slider {
+  min-width: 3px;
+  min-height: 3px;
+  margin: 0;
+  border: 2px solid transparent;
+}
+
+scrollbar.overlay-indicator.vertical:not(.dragging):not(.hovering) slider {
+  min-height: 40px;
+}
+
+scrollbar.overlay-indicator.horizontal:not(.dragging):not(.hovering) slider {
+  min-width: 40px;
+}
+
+scrollbar.overlay-indicator.dragging,
+scrollbar.overlay-indicator.hovering {
+  background-color: {{alpha(bg, 0.8)}};
+}
+
+scrollbar button {
+  min-width: 12px;
+  min-height: 12px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  color: {{muted}};
+  background-color: transparent;
+}
+
+scrollbar.vertical button.down {
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+
+scrollbar.vertical button.up {
+  -gtk-icon-source: -gtk-icontheme("pan-up-symbolic");
+}
+
+scrollbar.horizontal button.down {
+  -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+}
+
+scrollbar.horizontal button.up {
+  -gtk-icon-source: -gtk-icontheme("pan-start-symbolic");
+}
+
+scrolledwindow viewport.frame {
+  border-style: none;
+}
+
+scrolledwindow overshoot,
+scrolledwindow undershoot {
+  background-image: none;
+  box-shadow: none;
+}
+
+scrolledwindow junction {
+  border-style: solid none none solid;
+  border-width: 1px;
+  border-color: {{border}};
+  background-color: {{window_bg}};
+}

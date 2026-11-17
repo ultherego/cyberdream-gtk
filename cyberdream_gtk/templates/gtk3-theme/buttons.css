@@ -1,0 +1,353 @@
+/* ==== Buttons ==== */
+button {
+  min-height: 22px;
+  min-width: 16px;
+  padding: {{@control_pad}};
+  border: 1px solid {{border}};
+  border-radius: {{@radius}};
+  color: {{text}};
+  background-color: {{control_bg}};
+  background-image: none;
+  box-shadow: none;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+  font-weight: bold;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+button:hover {
+  background-color: {{control_hover}};
+  border-color: {{muted}};
+}
+
+button:active,
+button:checked {
+  background-color: {{accent_soft}};
+  border-color: {{accent}};
+  color: {{accent}};
+}
+
+button:checked:hover {
+  background-color: {{alpha(accent, 0.26)}};
+}
+
+button:focus {
+  border-color: {{accent}};
+}
+
+button:disabled {
+  color: {{disabled_text}};
+  background-color: {{window_bg}};
+  border-color: {{border}};
+}
+
+button:disabled:checked {
+  background-color: {{alpha(accent, 0.08)}};
+}
+
+button.text-button {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+button.image-button {
+  min-width: 22px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+button.text-button.image-button {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+button.text-button.image-button label {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+button.circular {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border-radius: 9999px;
+}
+
+button.circular label {
+  padding: 0;
+}
+
+/* Flat */
+button.flat,
+button.sidebar-button,
+toolbar button,
+.inline-toolbar button {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+button.flat:hover,
+button.sidebar-button:hover,
+toolbar button:hover,
+.inline-toolbar button:hover {
+  background-color: {{item_hover}};
+  border-color: transparent;
+}
+
+button.flat:active,
+button.flat:checked,
+toolbar button:active,
+toolbar button:checked,
+.inline-toolbar button:active,
+.inline-toolbar button:checked {
+  background-color: {{accent_soft}};
+  border-color: transparent;
+  color: {{accent}};
+}
+
+button.flat:disabled,
+toolbar button:disabled,
+.inline-toolbar button:disabled {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* Suggested and destructive */
+button.suggested-action {
+  color: {{on_accent}};
+  background-color: {{accent}};
+  border-color: {{accent}};
+}
+
+button.suggested-action:hover {
+  background-color: {{mix(accent, fg, 0.25)}};
+  border-color: {{mix(accent, fg, 0.25)}};
+}
+
+button.suggested-action:active,
+button.suggested-action:checked {
+  color: {{on_accent}};
+  background-color: {{mix(accent, bg, 0.25)}};
+  border-color: {{mix(accent, bg, 0.25)}};
+}
+
+button.destructive-action {
+  color: {{on_accent}};
+  background-color: {{destructive}};
+  border-color: {{destructive}};
+}
+
+button.destructive-action:hover {
+  background-color: {{mix(destructive, fg, 0.25)}};
+  border-color: {{mix(destructive, fg, 0.25)}};
+}
+
+button.destructive-action:active,
+button.destructive-action:checked {
+  color: {{on_accent}};
+  background-color: {{mix(destructive, bg, 0.25)}};
+  border-color: {{mix(destructive, bg, 0.25)}};
+}
+
+button.suggested-action:disabled,
+button.destructive-action:disabled {
+  color: {{disabled_text}};
+  background-color: {{window_bg}};
+  border-color: {{border}};
+}
+
+button.suggested-action.flat {
+  color: {{accent}};
+  background-color: transparent;
+  border-color: transparent;
+}
+
+button.destructive-action.flat {
+  color: {{destructive}};
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* Link buttons */
+button.link,
+button.link:hover,
+button.link:active,
+button.link:checked {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+  font-weight: normal;
+}
+
+button.link,
+button.link > label {
+  color: {{link}};
+  text-decoration-line: underline;
+}
+
+button.link:hover,
+button.link:hover > label {
+  color: {{mix(link, fg, 0.25)}};
+}
+
+button.link:visited,
+button.link:visited > label {
+  color: {{link_visited}};
+}
+
+/* Window buttons */
+button.titlebutton {
+  min-width: 24px;
+  min-height: 24px;
+  margin: 0 2px;
+  padding: 0;
+  border: none;
+  border-radius: 9999px;
+  background-color: {{item_hover}};
+  color: {{text}};
+}
+
+button.titlebutton:hover {
+  background-color: {{control_active}};
+}
+
+button.titlebutton.close:hover {
+  background-color: {{destructive}};
+  color: {{on_accent}};
+}
+
+button.titlebutton:backdrop {
+  color: {{muted}};
+}
+
+/* Buttons that carry a value */
+button.color {
+  padding: 4px;
+}
+
+button.color colorswatch:only-child,
+button.color colorswatch:only-child overlay {
+  border-radius: 3px;
+}
+
+button.font > box > box > label {
+  font-weight: bold;
+}
+
+button.close.flat,
+button.small-button {
+  min-width: 20px;
+  min-height: 20px;
+  padding: 2px;
+}
+
+/* Linked groups: one outline, square inner corners */
+.linked:not(.vertical) > button,
+.linked:not(.vertical) > entry,
+.linked:not(.vertical) > spinbutton,
+.linked:not(.vertical) > combobox > box > button.combo {
+  border-radius: 0;
+  border-right-style: none;
+}
+
+.linked:not(.vertical) > button:first-child,
+.linked:not(.vertical) > entry:first-child,
+.linked:not(.vertical) > spinbutton:first-child,
+.linked:not(.vertical) > combobox:first-child > box > button.combo {
+  border-top-left-radius: {{@radius}};
+  border-bottom-left-radius: {{@radius}};
+}
+
+.linked:not(.vertical) > button:last-child,
+.linked:not(.vertical) > entry:last-child,
+.linked:not(.vertical) > spinbutton:last-child,
+.linked:not(.vertical) > combobox:last-child > box > button.combo {
+  border-top-right-radius: {{@radius}};
+  border-bottom-right-radius: {{@radius}};
+  border-right-style: solid;
+}
+
+.linked:not(.vertical) > button:only-child,
+.linked:not(.vertical) > entry:only-child,
+.linked:not(.vertical) > spinbutton:only-child,
+.linked:not(.vertical) > combobox:only-child > box > button.combo {
+  border-radius: {{@radius}};
+  border-right-style: solid;
+}
+
+.linked.vertical > button,
+.linked.vertical > entry,
+.linked.vertical > spinbutton,
+.linked.vertical > combobox > box > button.combo {
+  border-radius: 0;
+  border-bottom-style: none;
+}
+
+.linked.vertical > button:first-child,
+.linked.vertical > entry:first-child,
+.linked.vertical > spinbutton:first-child,
+.linked.vertical > combobox:first-child > box > button.combo {
+  border-top-left-radius: {{@radius}};
+  border-top-right-radius: {{@radius}};
+}
+
+.linked.vertical > button:last-child,
+.linked.vertical > entry:last-child,
+.linked.vertical > spinbutton:last-child,
+.linked.vertical > combobox:last-child > box > button.combo {
+  border-bottom-left-radius: {{@radius}};
+  border-bottom-right-radius: {{@radius}};
+  border-bottom-style: solid;
+}
+
+.linked.vertical > button:only-child,
+.linked.vertical > entry:only-child,
+.linked.vertical > spinbutton:only-child,
+.linked.vertical > combobox:only-child > box > button.combo {
+  border-radius: {{@radius}};
+  border-bottom-style: solid;
+}
+
+/* Stack switchers */
+stackswitcher button.text-button {
+  min-width: 100px;
+}
+
+stackswitcher button.circular,
+stackswitcher button.text-button.circular {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+}
+
+button.needs-attention > label,
+button.needs-attention > image,
+stacksidebar row.needs-attention > label {
+  background-image: radial-gradient(circle closest-side, {{accent}} 0%, {{accent}} 90%, transparent 100%);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  background-position: right 3px;
+}
+
+/* Combo boxes */
+combobox arrow {
+  min-height: 16px;
+  min-width: 16px;
+  -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+
+combobox button.combo {
+  font-weight: normal;
+}
+
+combobox:drop(active) button.combo {
+  border-color: {{accent}};
+}
+
+combobox menu menuitem {
+  padding: 5px 8px;
+}
+
+cellview {
+  background-color: transparent;
+}

@@ -4,10 +4,16 @@ A GTK3 and GTK4/libadwaita theme in [cyberdream](https://github.com/scottmckendr
 colors, generated from a single palette. Written from scratch, with no code or
 dependencies from other themes.
 
-Status: **Phase 1, overlay**. The theme sets named colors and a small set of CSS
-rules on top of libadwaita (GTK4) and `adw-gtk3-dark` (GTK3). Shapes, spacing and
-widget styling come from the base theme, so the GTK theme in your system settings
-must stay `adw-gtk3-dark`; "cyberdream" does not appear in the list of themes.
+It has two parts:
+
+- **A standalone GTK3 theme, `cyberdream`**, selectable by name. It is a complete
+  stylesheet of its own and does not depend on any other theme.
+- **Color overlays** in `~/.config/gtk-3.0` and `~/.config/gtk-4.0`. libadwaita apps
+  ignore GTK themes, so for them the overlay sets the named colors and a small set of
+  rules on top of libadwaita; shapes and spacing there are still libadwaita's.
+
+GTK4 apps that do not use libadwaita get an interim theme that recolors
+`adw-gtk3-dark`'s GTK4 stylesheet; a standalone GTK4 stylesheet is planned.
 
 It also ships color schemes for editors that do not take their editing area colors
 from the GTK theme: GtkSourceView 5 (Text Editor and similar) and Geany.
@@ -15,8 +21,8 @@ from the GTK theme: GtkSourceView 5 (Text Editor and similar) and Geany.
 ## Requirements
 
 - Python 3.11 or newer (standard library only)
-- GTK3: the `adw-gtk3-dark` theme set as the GTK theme
-- GTK4: libadwaita
+- GTK4: libadwaita; for GTK4 apps without libadwaita, `adw-gtk3-dark` installed in
+  `~/.themes` next to this theme
 - optionally PyGObject, in which case the tests check the CSS with the real GTK parser
 
 ## Usage
@@ -24,9 +30,20 @@ from the GTK theme: GtkSourceView 5 (Text Editor and similar) and Geany.
 ```sh
 ./install.sh --dry-run    # show what would change
 ./install.sh              # build and install
-./uninstall.sh            # remove the overlay
+./uninstall.sh            # remove everything the installer wrote
 python3 -m unittest discover -s tests
+tools/render.sh           # render a GTK3 widget gallery to build/gallery-gtk3.png
 ```
+
+Then select the theme (the installer does not change your settings):
+
+```sh
+gsettings set org.gnome.desktop.interface gtk-theme cyberdream
+```
+
+and set `gtk-theme-name=cyberdream` in `~/.config/gtk-3.0/settings.ini` and
+`~/.config/gtk-4.0/settings.ini`. For Flatpak apps:
+`flatpak override --user --env=GTK_THEME=cyberdream`.
 
 Restart GTK apps after installing. What to look at: [tests/CHECKLIST.md](tests/CHECKLIST.md).
 
@@ -35,7 +52,9 @@ Restart GTK apps after installing. What to look at: [tests/CHECKLIST.md](tests/C
 1. Copies every file it is about to touch to `~/.config/gtk-cyberdream-bak-YYYYMMDD-HHMMSS/`.
 2. In `~/.config/gtk-3.0` and `~/.config/gtk-4.0`, writes the generated `cyberdream.css`
    and adds the line `@import url("cyberdream.css");` to `gtk.css`, after any other imports.
-3. Writes the editor schemes: `~/.local/share/gtksourceview-5/styles/cyberdream.xml`
+3. Writes the theme to `~/.themes/cyberdream` (`index.theme`, `gtk-3.0/gtk.css`,
+   `gtk-4.0/gtk.css`).
+4. Writes the editor schemes: `~/.local/share/gtksourceview-5/styles/cyberdream.xml`
    and `~/.config/geany/colorschemes/cyberdream.conf`.
 
 An editor scheme has to be selected once in the app:
@@ -62,17 +81,21 @@ The cyberdream import comes after the DMS one, so its colors win.
 
 ### Firefox
 
-For Adwaita-family themes (including `adw-gtk3`), Firefox uses a built-in libadwaita
-palette instead of the GTK theme's colors, so its context menu stays grey.
-To make it use the theme: `about:config` → `widget.gtk.libadwaita-colors.enabled`
-→ `false`, then restart Firefox.
+Firefox treats every GTK theme whose name starts with `adw` (Adwaita, `adw-gtk3`) as
+Adwaita: it replaces the theme's colors with a built-in libadwaita palette and takes
+the accent from the desktop's accent color setting. With `cyberdream` selected as the
+GTK theme this does not apply and Firefox reads the theme's colors.
+
+If you stay on `adw-gtk3-dark` with only the overlays, set
+`widget.gtk.libadwaita-colors.enabled` to `false` in `about:config` and restart
+Firefox; the accent then still comes from the desktop setting.
 
 ## Changing colors
 
 | File | Contents |
 |---|---|
 | `palette.toml` | the 15 cyberdream colors and the accent choice |
-| `roles.toml` | roles (e.g. `raised_bg = "bg_alt"`) and the mapping from roles to GTK named colors |
+| `roles.toml` | roles (e.g. `raised_bg = "bg_alt"`), shape tokens (corner radii, padding) and the mapping from roles to GTK named colors |
 | `cyberdream_gtk/templates/*` | CSS rules and scheme files with `{{role}}` references |
 
 The accent is one line in `palette.toml`; run `./install.sh` again afterwards:
@@ -84,6 +107,7 @@ accent = "blue"   # default "green"; any color name from the palette
 Expressions available in `roles.toml` and in templates: a color or role name, `#rrggbb`,
 `alpha(color, 0.3)`, `mix(a, b, 0.25)`. The generator evaluates them to final values,
 so the output does not depend on the color functions of a particular GTK version.
+Templates can also use `{{@name}}` for a shape token from the `[shape]` table.
 
 ## Layout
 
@@ -93,17 +117,16 @@ cyberdream_gtk/
   color.py                    colors and expressions
   palette.py                  loading and validation
   render.py                   templates -> output files
-  targets/                    output targets (gtk3, gtk4, sourceview, geany)
-  templates/                  common.css, gtk3.css, gtk4.css, sourceview.xml, geany.conf
+  targets/                    output targets (overlays, standalone theme, editor schemes)
+  templates/                  overlay rules, gtk3-theme/ (the standalone stylesheet), schemes
   install.py, cli.py          installer and command line
 tests/                        tests and the checklist
+tools/                        offscreen widget gallery for reviewing the theme
 build/                        output (not in the repository)
 ```
 
 Each target is a `Target` entry in `cyberdream_gtk/targets/`: its kind (GTK overlay or
 plain file), where it is installed, its named color sections and its list of templates.
-A Phase 2 target (a full standalone stylesheet) or targets for other toolkits are added
-as further modules in that directory.
 
 ## License
 

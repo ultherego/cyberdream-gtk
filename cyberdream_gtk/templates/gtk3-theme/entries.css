@@ -1,0 +1,177 @@
+/* ==== Entries ==== */
+entry,
+spinbutton:not(.vertical) {
+  min-height: 32px;
+  padding: 0 8px;
+  border: 1px solid {{border}};
+  border-radius: {{@radius}};
+  caret-color: {{accent}};
+  color: {{text}};
+  background-color: {{field_bg}};
+  background-image: none;
+  box-shadow: none;
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+entry:hover,
+spinbutton:not(.vertical):hover {
+  border-color: {{muted}};
+}
+
+entry:focus,
+spinbutton:not(.vertical):focus {
+  border-color: {{accent}};
+  box-shadow: inset 0 0 0 1px {{accent}};
+}
+
+entry:disabled,
+spinbutton:not(.vertical):disabled {
+  color: {{disabled_text}};
+  background-color: {{window_bg}};
+  border-color: {{border}};
+}
+
+entry.flat,
+entry.flat:focus {
+  min-height: 0;
+  padding: 2px;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+entry image {
+  color: {{muted}};
+}
+
+entry image:hover {
+  color: {{text}};
+}
+
+entry image.left {
+  margin-right: 6px;
+}
+
+entry image.right {
+  margin-left: 6px;
+}
+
+entry.error {
+  border-color: {{error}};
+}
+
+entry.error:focus {
+  box-shadow: inset 0 0 0 1px {{error}};
+}
+
+entry.warning {
+  border-color: {{warning}};
+}
+
+entry.warning:focus {
+  box-shadow: inset 0 0 0 1px {{warning}};
+}
+
+entry progress {
+  margin: 2px -8px;
+  border-radius: 0;
+  border-width: 0 0 2px;
+  border-style: solid;
+  border-color: {{accent}};
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+entry:drop(active) {
+  border-color: {{accent}};
+}
+
+treeview entry.flat,
+treeview entry {
+  border-radius: 0;
+  background-color: {{view_bg}};
+}
+
+/* Spin buttons */
+spinbutton:not(.vertical) {
+  padding: 0;
+}
+
+spinbutton:not(.vertical) entry {
+  min-width: 28px;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+spinbutton:not(.vertical) button {
+  min-height: 16px;
+  margin: 0;
+  padding: 0 8px;
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: {{border}};
+  border-radius: 0;
+  background-color: transparent;
+  color: {{text}};
+  box-shadow: none;
+}
+
+spinbutton:not(.vertical) button:hover {
+  background-color: {{item_hover}};
+}
+
+spinbutton:not(.vertical) button:active {
+  background-color: {{accent_soft}};
+  color: {{accent}};
+}
+
+spinbutton:not(.vertical) button:disabled {
+  color: {{disabled_text}};
+}
+
+spinbutton:not(.vertical) button:last-child {
+  border-top-right-radius: {{@radius}};
+  border-bottom-right-radius: {{@radius}};
+}
+
+spinbutton.vertical {
+  padding: 0;
+}
+
+spinbutton.vertical entry {
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0;
+  border-radius: 0;
+}
+
+spinbutton.vertical button {
+  min-height: 32px;
+  min-width: 32px;
+  padding: 0;
+}
+
+spinbutton.vertical button.up {
+  border-radius: {{@radius}} {{@radius}} 0 0;
+  border-bottom-style: none;
+}
+
+spinbutton.vertical button.down {
+  border-radius: 0 0 {{@radius}} {{@radius}};
+  border-top-style: none;
+}
+
+/* Search and location bars */
+searchbar > revealer > box,
+.location-bar {
+  padding: 6px;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: {{border}};
+  background-color: {{raised_bg}};
+}

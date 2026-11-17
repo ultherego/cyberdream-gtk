@@ -1,0 +1,8 @@
+/* Interim GTK4 theme for apps that do not use libadwaita: adw-gtk3's GTK4
+ * stylesheet (imported above) recolored through the named colors. It needs
+ * the adw-gtk3-dark theme installed next to this one. A standalone GTK4
+ * stylesheet will replace it. */
+:root {
+  --accent-bg-color: {{accent}};
+  --accent-fg-color: {{on_accent}};
+}

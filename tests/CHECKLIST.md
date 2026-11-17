@@ -47,7 +47,7 @@ To judge (deliberate design choices, easy to change in `roles.toml` and the temp
 - [ ] The line under the header (`headerbar_shade_color`) is not too strong.
 - [ ] Secondary text (`.dimmed`) in `#7b8496` also looks right on selected rows.
 
-## GTK3 / adw-gtk3-dark
+## GTK3 (the standalone `cyberdream` theme)
 
 - [ ] **An app with a menu bar** (e.g. Geany): drop-down menu (border, item highlight),
       tabs, tree (selection as a greenish plate with white text); the editing area with
@@ -59,9 +59,9 @@ To judge (deliberate design choices, easy to change in `roles.toml` and the temp
 
 ## Other
 
-- [ ] **Firefox:** the context menu has a dark background and readable text.
-      If it is grey (`#36363a`), set `widget.gtk.libadwaita-colors.enabled` to `false`
-      in `about:config`.
+- [ ] **Firefox:** the context menu has a `#1e2124` background, readable text and the
+      theme's accent. If it is grey (`#36363a`), the GTK theme name still starts with
+      `adw`; see the Firefox section of the README.
 - [ ] **Flatpak (any GTK app):** same colors as in native apps.
 - [ ] **Electron/Tauri apps:** they have their own look; check only the system file
       chooser dialogs.

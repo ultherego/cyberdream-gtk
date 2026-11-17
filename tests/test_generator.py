@@ -8,7 +8,7 @@ from pathlib import Path
 from cyberdream_gtk.color import Color, ColorError, contrast, evaluate
 from cyberdream_gtk.palette import ROOT, Theme, ThemeError
 from cyberdream_gtk.render import build, render, render_template
-from cyberdream_gtk.targets import ALL, GEANY, GTK3, GTK4, SOURCEVIEW
+from cyberdream_gtk.targets import ALL, GEANY, GTK3, GTK3_THEME, GTK4, GTK4_THEME, SOURCEVIEW
 
 OVERLAYS = (GTK3, GTK4)
 
@@ -145,7 +145,7 @@ class RenderTest(unittest.TestCase):
     def test_gtk_parsers_accept_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             build(self.theme, Path(tmp))
-            for target, version in ((GTK3, "3.0"), (GTK4, "4.0")):
+            for target, version in ((GTK3, "3.0"), (GTK4, "4.0"), (GTK3_THEME, "3.0")):
                 with self.subTest(gtk=version):
                     if not has_gtk(version):
                         self.skipTest(f"PyGObject / GTK {version} not available")
@@ -155,6 +155,33 @@ class RenderTest(unittest.TestCase):
                         capture_output=True, text=True,
                     )
                     self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+
+class StandaloneThemeTest(unittest.TestCase):
+    def setUp(self):
+        self.theme = Theme.load()
+
+    def test_shape_tokens(self):
+        self.assertEqual(render_template("a { r: {{@radius}}; }", self.theme), "a { r: 6px; }")
+        with self.assertRaisesRegex(ThemeError, "unknown shape token"):
+            render_template("a { r: {{@nope}}; }", self.theme)
+
+    def test_gtk3_theme_covers_the_widget_set(self):
+        css = render(self.theme, GTK3_THEME)
+        self.assertNotIn("adw-gtk3", css)  # standalone: no dependency on another theme
+        self.assertNotIn("@import", css)
+        self.assertEqual(css.count("{"), css.count("}"))
+        for selector in ("button", "entry", "headerbar", "menu", "popover.background", "notebook > header",
+                         "treeview.view", "scrollbar slider", "switch", "check", "radio", "scale slider",
+                         "progressbar progress", "levelbar block", "tooltip.background", "decoration",
+                         "calendar", "infobar", "spinbutton", "combobox arrow", "placessidebar row",
+                         "paned > separator", "expander arrow", "list row", ".sidebar"):
+            self.assertRegex(css, r"(?m)^" + re.escape(selector) + r"\b", selector)
+
+    def test_gtk4_theme_imports_first(self):
+        css = render(self.theme, GTK4_THEME)
+        self.assertTrue(css.startswith("@import "))
+        self.assertIn("--accent-bg-color: #5eff6c;", css)
 
 
 class SourceViewTest(unittest.TestCase):

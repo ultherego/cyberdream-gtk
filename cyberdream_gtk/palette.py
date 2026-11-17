@@ -23,6 +23,7 @@ class Theme:
     colors: dict[str, Color]
     roles: dict[str, str]
     named: dict[str, dict[str, str]]
+    shape: dict[str, str] = field(default_factory=dict)
     _cache: dict[str, Color] = field(default_factory=dict, repr=False)
 
     @classmethod
@@ -60,6 +61,7 @@ class Theme:
             colors=colors,
             roles=role_table,
             named=roles.get("named", {}),
+            shape={k: str(v) for k, v in roles.get("shape", {}).items()},
         )
         theme.validate()
         return theme

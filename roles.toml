@@ -5,6 +5,7 @@
 #   #rrggbb           a literal color
 #   alpha(expr, 0.5)  expr with its opacity multiplied
 #   mix(a, b, 0.25)   25% of the way from a to b
+# Templates can also use {{@name}} for a value from the [shape] table.
 #
 # Templates and the [named.*] tables below refer to roles, never to hex values.
 
@@ -44,6 +45,23 @@ link_visited = "magenta"
 scrollbar        = "alpha(grey, 0.6)"
 scrollbar_hover  = "grey"
 scrollbar_active = "accent"
+
+# Controls (used by the standalone themes)
+control_bg      = "bg_alt"
+control_hover   = "mix(bg_alt, fg, 0.08)"
+control_active  = "mix(bg_alt, fg, 0.16)"
+field_bg        = "dark"
+trough          = "selection"
+accent_soft     = "alpha(accent, 0.18)"
+disabled_text   = "mix(fg, bg, 0.6)"
+shadow          = "alpha(#000000, 0.5)"
+
+# Shape tokens: plain CSS values, referenced in templates as {{@name}}.
+[shape]
+radius        = "6px"     # buttons, entries, rows
+radius_large  = "10px"    # menus, popovers, cards
+radius_window = "10px"    # top corners of client-side decorated windows
+control_pad   = "5px 10px"
 
 # Named colors shared by libadwaita (GTK4) and adw-gtk3 (GTK3).
 # Anything not listed keeps the default of the base theme.

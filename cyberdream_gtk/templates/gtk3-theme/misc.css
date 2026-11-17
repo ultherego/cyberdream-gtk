@@ -1,0 +1,157 @@
+/* ==== Color chooser ==== */
+colorswatch,
+colorswatch:drop(active) {
+  border-style: none;
+}
+
+colorswatch overlay {
+  border: 1px solid {{alpha(#000000, 0.4)}};
+  border-radius: 4px;
+}
+
+colorswatch.top,
+colorswatch.top overlay {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+colorswatch.bottom,
+colorswatch.bottom overlay {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+colorswatch.dark overlay {
+  color: white;
+}
+
+colorswatch.light overlay {
+  color: black;
+}
+
+colorswatch:hover overlay {
+  border-color: {{text}};
+}
+
+colorswatch#add-color-button {
+  border-radius: 4px;
+}
+
+colorswatch#add-color-button overlay {
+  color: {{text}};
+  background-color: {{control_bg}};
+  border-color: {{border}};
+}
+
+colorswatch#editor-color-sample {
+  border-radius: 4px;
+}
+
+colorchooser .popover.osd {
+  border-radius: {{@radius}};
+}
+
+/* ==== Text handles ==== */
+cursor-handle {
+  min-width: 20px;
+  min-height: 24px;
+  border-radius: 9999px;
+  background-color: {{accent}};
+  -gtk-icon-source: none;
+}
+
+cursor-handle.insertion-cursor {
+  border-radius: 0 9999px 9999px 9999px;
+}
+
+/* ==== Shortcuts window ==== */
+shortcuts-section {
+  margin: 20px;
+}
+
+.shortcuts-search-results {
+  margin: 20px;
+}
+
+shortcut > .keycap {
+  min-width: 20px;
+}
+
+/* ==== Assistant ==== */
+assistant .sidebar {
+  padding: 6px;
+  border-top: 1px solid {{border}};
+}
+
+assistant .sidebar label {
+  padding: 6px 12px;
+  color: {{muted}};
+}
+
+assistant .sidebar label.highlight {
+  border-radius: {{@radius}};
+  color: {{text}};
+  background-color: {{row_selected}};
+}
+
+/* ==== Assorted ==== */
+.content-view {
+  background-color: {{view_bg}};
+}
+
+.content-view:hover {
+  -gtk-icon-effect: highlight;
+}
+
+stack.view,
+.view.frame {
+  border-color: {{border}};
+}
+
+image.icon-dropshadow,
+.icon-dropshadow {
+  -gtk-icon-shadow: 0 1px 2px {{shadow}};
+}
+
+.thumbnail,
+.icon.thumbnail {
+  border: 1px solid {{border}};
+  border-radius: 2px;
+  background-color: {{raised_bg}};
+}
+
+.devel {
+  background-color: {{mix(bg, yellow, 0.1)}};
+}
+
+.card {
+  border: 1px solid {{border}};
+  border-radius: {{@radius_large}};
+  color: {{text}};
+  background-color: {{raised_bg}};
+}
+
+.boxed-list {
+  border: 1px solid {{border}};
+  border-radius: {{@radius_large}};
+  background-color: {{raised_bg}};
+}
+
+overlay > .floating-bar,
+.floating-bar {
+  padding: 2px 8px;
+  border: 1px solid {{border}};
+  border-radius: {{@radius}} {{@radius}} 0 0;
+  color: {{text}};
+  background-color: {{raised_bg}};
+}
+
+GtkHTML,
+webview {
+  background-color: {{view_bg}};
+}
+
+layout,
+fixed {
+  background-color: transparent;
+}

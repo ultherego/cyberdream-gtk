@@ -1,0 +1,318 @@
+/* ==== Extra named colors that GTK3 apps and libraries look up ==== */
+@define-color borders {{border}};
+@define-color unfocused_borders {{border}};
+@define-color unfocused_insensitive_color {{disabled_text}};
+@define-color content_view_bg {{view_bg}};
+@define-color text_view_bg {{view_bg}};
+@define-color placeholder_text_color {{muted}};
+@define-color shade_color {{alpha(#000000, 0.3)}};
+@define-color headerbar_darker_shade_color {{border}};
+@define-color card_shade_color {{border}};
+@define-color popover_shade_color {{border}};
+@define-color sidebar_shade_color {{border}};
+@define-color wm_title {{text}};
+@define-color wm_unfocused_title {{muted}};
+@define-color wm_highlight {{alpha(#000000, 0)}};
+@define-color wm_borders_edge {{border}};
+@define-color wm_bg_a {{raised_bg}};
+@define-color wm_bg_b {{raised_bg}};
+@define-color wm_shadow {{shadow}};
+@define-color wm_border {{border}};
+@define-color wm_button_hover_color_a {{control_hover}};
+@define-color wm_button_hover_color_b {{control_hover}};
+@define-color wm_button_active_color_a {{control_active}};
+@define-color wm_button_active_color_b {{control_active}};
+@define-color wm_button_active_color_c {{control_active}};
+
+/* ==== Base ==== */
+* {
+  padding: 0;
+  -GtkToolButton-icon-spacing: 4;
+  -GtkTextView-error-underline-color: {{error}};
+  -GtkScrolledWindow-scrollbar-spacing: 0;
+  -GtkToolItemGroup-expander-size: 11;
+  -GtkWidget-text-handle-width: 20;
+  -GtkWidget-text-handle-height: 24;
+  -GtkDialog-button-spacing: 4;
+  -GtkDialog-action-area-border: 0;
+  outline-color: {{alpha(accent, 0.6)}};
+  outline-style: solid;
+  outline-offset: -3px;
+  outline-width: 1px;
+  -gtk-outline-radius: {{@radius}};
+  -gtk-secondary-caret-color: {{accent}};
+}
+
+.background {
+  color: {{text}};
+  background-color: {{window_bg}};
+}
+
+*:disabled {
+  -gtk-icon-effect: dim;
+}
+
+.gtkstyle-fallback {
+  color: {{text}};
+  background-color: {{window_bg}};
+}
+
+.gtkstyle-fallback:hover {
+  background-color: {{control_hover}};
+}
+
+.gtkstyle-fallback:active {
+  background-color: {{control_active}};
+}
+
+.gtkstyle-fallback:disabled {
+  color: {{disabled_text}};
+}
+
+.gtkstyle-fallback:selected {
+  color: {{on_accent}};
+  background-color: {{accent}};
+}
+
+/* Views */
+.view,
+iconview,
+.view text,
+iconview text,
+textview text {
+  color: {{text}};
+  background-color: {{view_bg}};
+}
+
+.view:disabled,
+iconview:disabled,
+textview text:disabled {
+  color: {{disabled_text}};
+}
+
+.view:selected,
+iconview:selected,
+.view text:selected,
+iconview text:selected,
+flowbox flowboxchild:selected {
+  color: {{text}};
+  background-color: {{row_selected}};
+  border-radius: {{@radius}};
+}
+
+textview border {
+  color: {{muted}};
+  background-color: {{raised_bg}};
+}
+
+iconview:drop(active),
+.view:drop(active) {
+  box-shadow: inset 0 0 0 1px {{accent}};
+}
+
+rubberband,
+.rubberband {
+  border: 1px solid {{accent}};
+  background-color: {{accent_soft}};
+}
+
+flowbox > flowboxchild {
+  padding: 3px;
+  border-radius: {{@radius}};
+}
+
+/* Text */
+label {
+  caret-color: currentColor;
+}
+
+label:disabled {
+  color: {{disabled_text}};
+}
+
+label.separator {
+  color: {{muted}};
+}
+
+selection,
+label selection,
+entry selection,
+textview text selection {
+  color: {{text}};
+  background-color: {{text_selected}};
+}
+
+.dim-label,
+.subtitle,
+label.caption {
+  opacity: 1;
+  color: {{muted}};
+}
+
+.large-title { font-weight: 300; font-size: 24pt; }
+.title-1 { font-weight: 800; font-size: 20pt; }
+.title-2 { font-weight: 800; font-size: 15pt; }
+.title-3 { font-weight: 700; font-size: 15pt; }
+.title-4 { font-weight: 700; font-size: 13pt; }
+.heading { font-weight: 700; }
+.caption { font-size: smaller; }
+.caption-heading { font-weight: 700; font-size: smaller; }
+.monospace { font-family: monospace; }
+.numeric { font-feature-settings: "tnum"; }
+
+.accent { color: {{accent}}; }
+.success { color: {{success}}; }
+.warning { color: {{warning}}; }
+.error { color: {{error}}; }
+
+*:link {
+  color: {{link}};
+}
+
+*:link:hover {
+  color: {{mix(link, fg, 0.25)}};
+}
+
+*:link:visited {
+  color: {{link_visited}};
+}
+
+/* Spinner */
+@keyframes cyberdream-spin {
+  to { -gtk-icon-transform: rotate(1turn); }
+}
+
+spinner {
+  background: none;
+  opacity: 0;
+  -gtk-icon-source: -gtk-icontheme("process-working-symbolic");
+}
+
+spinner:checked {
+  opacity: 1;
+  animation: cyberdream-spin 1s linear infinite;
+}
+
+spinner:checked:disabled {
+  opacity: 0.5;
+}
+
+/* Lines */
+separator {
+  min-width: 1px;
+  min-height: 1px;
+  background-color: {{border}};
+}
+
+/* Window decorations */
+decoration {
+  border-radius: {{@radius_window}} {{@radius_window}} 0 0;
+  border-width: 0;
+  box-shadow: 0 3px 9px 1px {{shadow}}, 0 0 0 1px {{border}};
+  margin: 10px;
+}
+
+decoration:backdrop {
+  box-shadow: 0 3px 9px 1px transparent, 0 2px 6px 2px {{alpha(#000000, 0.3)}}, 0 0 0 1px {{border}};
+  transition: 200ms ease-out;
+}
+
+.maximized decoration,
+.fullscreen decoration,
+.tiled decoration,
+.tiled-top decoration,
+.tiled-right decoration,
+.tiled-bottom decoration,
+.tiled-left decoration {
+  border-radius: 0;
+}
+
+.popup decoration {
+  box-shadow: none;
+}
+
+.ssd decoration {
+  box-shadow: 0 0 0 1px {{border}};
+}
+
+.csd.popup decoration {
+  border-radius: {{@radius_large}};
+  box-shadow: 0 1px 4px {{shadow}}, 0 0 0 1px {{border}};
+}
+
+tooltip.csd decoration {
+  border-radius: {{@radius}};
+  box-shadow: none;
+}
+
+messagedialog.csd decoration {
+  border-radius: {{@radius_window}};
+}
+
+.solid-csd decoration {
+  margin: 0;
+  padding: 1px;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: {{border}};
+}
+
+/* Tooltips */
+tooltip {
+  padding: 4px;
+  border-radius: {{@radius}};
+  box-shadow: none;
+  text-shadow: none;
+}
+
+tooltip.background {
+  background-color: {{tooltip_bg}};
+  background-clip: padding-box;
+  border: 1px solid {{border}};
+  color: {{text}};
+}
+
+tooltip decoration {
+  background-color: transparent;
+}
+
+tooltip * {
+  padding: 4px;
+  background-color: transparent;
+  color: {{text}};
+}
+
+/* On-screen display */
+.osd,
+popover.background.osd {
+  color: {{text}};
+  background-color: {{alpha(dark, 0.92)}};
+  border: 1px solid {{border}};
+  border-radius: {{@radius_large}};
+}
+
+.app-notification,
+.app-notification.frame {
+  padding: 10px;
+  border-radius: 0 0 {{@radius_large}} {{@radius_large}};
+  border: 1px solid {{border}};
+  border-top-style: none;
+  background-color: {{raised_bg}};
+  color: {{text}};
+}
+
+.app-notification border {
+  border: none;
+}
+
+.keycap {
+  min-width: 20px;
+  min-height: 25px;
+  padding: 0 6px;
+  border: 1px solid {{border}};
+  border-bottom-width: 2px;
+  border-radius: {{@radius}};
+  background-color: {{raised_bg}};
+  color: {{text}};
+  font-size: smaller;
+}

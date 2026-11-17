@@ -1,0 +1,140 @@
+/* ==== Header bars and title bars ==== */
+headerbar,
+.titlebar:not(headerbar) {
+  min-height: 46px;
+  padding: 0 6px;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: {{border}};
+  border-radius: {{@radius_window}} {{@radius_window}} 0 0;
+  color: {{text}};
+  background-color: {{raised_bg}};
+  background-image: none;
+  box-shadow: none;
+}
+
+headerbar:backdrop,
+.titlebar:not(headerbar):backdrop {
+  background-color: {{window_bg}};
+  transition: 200ms ease-out;
+}
+
+headerbar .title {
+  padding-left: 12px;
+  padding-right: 12px;
+  font-weight: bold;
+}
+
+headerbar .subtitle {
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: smaller;
+  color: {{muted}};
+}
+
+headerbar:backdrop .title {
+  color: {{muted}};
+}
+
+headerbar entry,
+headerbar spinbutton,
+headerbar button,
+headerbar separator {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+headerbar button.titlebutton {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+headerbar separator.titlebutton {
+  margin: 12px 4px;
+}
+
+headerbar switch {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+headerbar.selection-mode {
+  color: {{on_accent}};
+  background-color: {{accent}};
+  border-color: {{accent}};
+}
+
+headerbar.selection-mode .subtitle {
+  color: {{on_accent}};
+}
+
+headerbar.selection-mode button {
+  color: {{on_accent}};
+  background-color: {{alpha(bg, 0.15)}};
+  border-color: {{alpha(bg, 0.3)}};
+}
+
+headerbar.selection-mode button:hover {
+  background-color: {{alpha(bg, 0.25)}};
+}
+
+headerbar.selection-mode button.suggested-action {
+  color: {{text}};
+  background-color: {{bg}};
+  border-color: {{bg}};
+}
+
+.tiled headerbar,
+.tiled-top headerbar,
+.tiled-right headerbar,
+.tiled-bottom headerbar,
+.tiled-left headerbar,
+.maximized headerbar,
+.fullscreen headerbar {
+  border-radius: 0;
+}
+
+headerbar.default-decoration,
+.csd headerbar.default-decoration {
+  min-height: 28px;
+  padding: 4px;
+}
+
+headerbar.default-decoration button.titlebutton {
+  min-height: 20px;
+  min-width: 20px;
+}
+
+window.csd > .titlebar:not(headerbar) {
+  padding: 0;
+  border-style: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.titlebar:not(headerbar) > separator {
+  background-color: {{border}};
+}
+
+.primary-toolbar {
+  border-bottom: 1px solid {{border}};
+  background-color: {{raised_bg}};
+}
+
+/* Path bars */
+.path-bar button.text-button,
+.path-bar button.image-button,
+.path-bar button {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.path-bar button.text-button.image-button label {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.path-bar button.slider-button {
+  padding-left: 0;
+  padding-right: 0;
+}

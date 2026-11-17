@@ -41,6 +41,7 @@ class Roots:
 
     config: Path
     data: Path
+    home: Path
 
     @classmethod
     def default(cls) -> Roots:
@@ -48,6 +49,7 @@ class Roots:
         return cls(
             Path(os.environ.get("XDG_CONFIG_HOME") or home / ".config"),
             Path(os.environ.get("XDG_DATA_HOME") or home / ".local" / "share"),
+            home,
         )
 
     def path(self, key: str) -> Path:
@@ -55,7 +57,7 @@ class Roots:
         root, sep, rel = key.partition(":")
         if not sep:  # manifests written before the data root existed
             root, rel = "config", key
-        if root not in ("config", "data"):
+        if root not in ("config", "data", "home"):
             raise InstallError(f"unknown root in backup manifest: {key!r}")
         return getattr(self, root) / rel
 

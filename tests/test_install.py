@@ -37,7 +37,8 @@ class InstallTest(unittest.TestCase):
         self.addCleanup(tmp.cleanup)
         self.config = Path(tmp.name, "config")
         self.data = Path(tmp.name, "data")
-        self.roots = inst.Roots(self.config, self.data)
+        self.home = Path(tmp.name, "home")
+        self.roots = inst.Roots(self.config, self.data, self.home)
         self.scheme = self.data / "gtksourceview-5" / "styles" / "cyberdream.xml"
         self.build = Path(tmp.name, "build")
         build(Theme.load(), self.build)
@@ -52,7 +53,7 @@ class InstallTest(unittest.TestCase):
 
     def snapshot(self):
         result = {}
-        paths = [*self.config.glob("gtk-[34].0/*"), *self.config.glob("geany/*/*"), *self.data.rglob("*.xml")]
+        paths = [*self.config.glob("gtk-[34].0/*"), *self.config.glob("geany/*/*"), *self.data.rglob("*.xml"), *(p for p in self.home.rglob("*") if p.is_file())]
         for path in sorted(paths):
             result[str(path.relative_to(self.config.parent))] = (
                 "-> " + os.readlink(path) if path.is_symlink() else path.read_text()

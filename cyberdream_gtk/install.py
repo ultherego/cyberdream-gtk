@@ -30,6 +30,8 @@ IMPORT_LINE = '@import url("cyberdream.css");'
 IMPORT_RE = re.compile(r'^\s*@import\s+(url\()?["\']cyberdream\.css["\']\)?\s*;\s*$')
 ANY_IMPORT_RE = re.compile(r"^\s*@import\b")
 DANK_IMPORT_LINE = '@import url("dank-colors.css");'
+# A theme's own stylesheet, e.g. /usr/share/themes/adw-gtk3-dark/gtk-4.0/gtk.css.
+THEME_LINK_RE = re.compile(r"(^|/)\.?themes/[^/]+/gtk-[34]\.0/[^/]+\.css$")
 BACKUP_PREFIX = "gtk-cyberdream-bak-"
 MANIFEST = "manifest.json"
 
@@ -79,9 +81,13 @@ def _read_gtk_css(path: Path) -> str:
         link = os.readlink(path)
         if "dank-colors.css" in link:
             return DANK_IMPORT_LINE + "\n"
-        if "themes/cyberdream/" in link:
+        if THEME_LINK_RE.search(link):
             # Theme switchers such as nwg-look link the selected theme's GTK4
-            # stylesheet here. For libadwaita that must be the overlay instead.
+            # stylesheet here. For libadwaita that must be the overlay instead:
+            # a whole theme at user priority would override apps' own CSS.
+            # Such links usually load nothing anyway, because GTK resolves the
+            # theme's relative @imports against ~/.config/gtk-4.0, not the
+            # theme directory. The backup keeps the link.
             return ""
         raise InstallError(
             f"{path} is a symlink to {link} that this tool did not "

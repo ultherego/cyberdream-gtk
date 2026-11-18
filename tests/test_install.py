@@ -126,6 +126,17 @@ class InstallTest(unittest.TestCase):
         self.assertFalse(gtk_css.is_symlink())
         self.assertEqual(gtk_css.read_text(), OURS + "\n")
 
+    def test_symlink_to_other_theme_is_replaced_and_backed_up(self):
+        """nwg-look links the selected theme, e.g. adw-gtk3-dark, the same way."""
+        gtk_css = self.config / "gtk-4.0" / "gtk.css"
+        gtk_css.unlink()
+        link = "/usr/share/themes/adw-gtk3-dark/gtk-4.0/gtk.css"
+        os.symlink(link, gtk_css)
+        dest = inst.install(self.build, self.roots, log=quiet)
+        self.assertFalse(gtk_css.is_symlink())
+        self.assertEqual(gtk_css.read_text(), OURS + "\n")
+        self.assertEqual(os.readlink(dest / "config" / "gtk-4.0" / "gtk.css"), link)
+
     def test_foreign_symlink_is_refused_before_any_change(self):
         gtk_css = self.config / "gtk-4.0" / "gtk.css"
         gtk_css.unlink()

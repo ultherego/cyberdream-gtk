@@ -75,7 +75,7 @@ Files are copied, not symlinked, so Flatpak apps with access to
 ### Theme switchers
 
 Tools such as nwg-look replace `~/.config/gtk-4.0/gtk.css` with a link to the selected
-theme's GTK4 stylesheet when you apply a theme. libadwaita apps need the overlay there
+theme's GTK4 stylesheet when you apply a theme, whichever theme that is. libadwaita apps need the overlay there
 instead, so run `./install.sh` again after using such a tool; the installer recognizes
 the link and puts the overlay back.
 
